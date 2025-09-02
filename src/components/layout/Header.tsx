@@ -9,7 +9,6 @@ import { SocialIcons } from "./SocialIcons";
 import Logo from "../../images/logo.png";
 import LogoOpen from "../../images/logo_white.png";
 import VectorMenu from "../../images/vectorMenu.png";
-import CurvedLeaf from "../shared/CurvedLeaf";
 import OpeningLeaves from "../shared/OpeningLeaves";
 
 const headerJson = {
@@ -113,7 +112,7 @@ export default function Header() {
                       >
                         <Link
                           to={item.url}
-                          className="text-xl sm:text-2xl lg:text-[40px] font-light hover:font-normal hover:text-tertiary"
+                          className="text-xl sm:text-2xl lg:text-[40px] font-light hover:text-tertiary"
                           onClick={() => setIsOpen(false)}
                         >
                           {item.link}
@@ -134,7 +133,7 @@ export default function Header() {
                       >
                         <Link
                           to={item.url}
-                          className="text-xl sm:text-2xl lg:text-[40px] font-light hover:font-normal hover:text-tertiary"
+                          className="text-xl sm:text-2xl lg:text-[40px] font-light hover:text-tertiary"
                           onClick={() => setIsOpen(false)}
                         >
                           {item.link}
@@ -166,14 +165,14 @@ export default function Header() {
                     </motion.div>
 
                     <div className="flex ">
-                      <div className="w-1/2 md:w-0 flex justify-end">
+                      <div className="w-1/2 md:w-0 flex justify-end sm:hidden">
                         <img
                           src={VectorMenu}
                           alt="Vector decorativo"
                           className="scale-[80%]"
                         />
                       </div>
-                      <div className="w-1/2 md:w-full flex justify-center items-center gap-6">
+                      <div className="w-1/2 md:w-full flex justify-center sm:justify-start gap-6">
                         <SocialIcons className="mb-8" sameSize />
                       </div>
                     </div>

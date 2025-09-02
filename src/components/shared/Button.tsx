@@ -22,7 +22,7 @@ const Button = ({
   squaered = false,
   disabled = false,
 }: ButtonProps) => {
-  const baseClass = "px-6 py-2 transition text-lg sm:text-xl w-full sm:w-auto ";
+  const baseClass = "px-6 py-2 transition text-lg sm:text-xl w-full sm:w-auto min-w-[220px] ";
 
   const variantClasses = {
     outline:

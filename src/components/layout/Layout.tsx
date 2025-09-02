@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "./Header";
+import Footer from "./Footer";
 
 export default function Layout({
   children,
@@ -11,6 +12,7 @@ export default function Layout({
     <div className="min-h-screen overflow-x-hidden">
       <Header />
       {children}
+      <Footer />
     </div>
   );
 }
