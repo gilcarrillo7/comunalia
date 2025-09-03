@@ -35,7 +35,7 @@ export default function Header() {
 
   return (
     <header className="bg-transparent text-white w-full absolute top-0 left-0 z-50">
-      <div className="container mx-auto flex items-center justify-between py-4 sm:py-8 md:py-16 relative z-50">
+      <div className="container mx-auto flex items-center justify-between gap-4 py-4 sm:py-8 md:py-16 relative z-50">
         <Link to="/" onClick={() => setIsOpen(false)} className="shrink-0">
           <img
             src={isOpen ? LogoOpen : Logo}
@@ -47,7 +47,7 @@ export default function Header() {
           {!isOpen && (
             <Button
               variant="secondary"
-              className="text-sm sm:text-xl px-2 sm:px-4"
+              className="text-sm sm:text-xl !px-2 sm:!px-4"
               squaered
             >
               {headerJson.headerBtn.btnText}
