@@ -1,8 +1,10 @@
 import React from "react";
 import classnames from "classnames";
+import ReactPlayer from "react-player";
 import Button from "../shared/Button";
 import { navigate } from "gatsby";
 import { BUTTON_TYPES, COLORS } from "../constants";
+import OpeningLeaves from "../shared/OpeningLeaves";
 
 type MediaType = "image" | "video" | "iframe";
 
@@ -17,6 +19,8 @@ type SectionProps = {
   mediaType?: MediaType;
   reverse?: boolean;
   bgColor?: string;
+  mediaAlign?: "center" | "border";
+  leaves?: boolean;
 };
 
 export default function ContentSection({
@@ -30,6 +34,8 @@ export default function ContentSection({
   mediaType = "image",
   reverse = false,
   bgColor = "light",
+  mediaAlign = "center",
+  leaves = false,
 }: SectionProps) {
   const handleButtonClick = (buttonLink: string) => {
     if (!buttonLink) return;
@@ -54,9 +60,14 @@ export default function ContentSection({
             }
           )}
         >
-          <div className="md:w-1/2 space-y-4">
+          <div
+            className={classnames("space-y-4", {
+              "md:w-2/3": mediaType !== "video",
+              "md:w-1/2": mediaType === "video",
+            })}
+          >
             {title && (
-              <h2 className="text-2xl sm:text-3xl font-bold text-tertiary">
+              <h2 className="text-3xl sm:text-5xl font-medium text-tertiary mb-6">
                 {title}
               </h2>
             )}
@@ -88,20 +99,52 @@ export default function ContentSection({
             )}
           </div>
           {/* Media */}
-          <div className="md:w-1/2 flex justify-center">
-            {mediaType === "image" && mediaSrc && (
+          <div
+            className={classnames({
+              "md:w-1/3": mediaType !== "video",
+              "md:w-1/2": mediaType === "video",
+              "flex justify-center": mediaAlign === "center",
+            })}
+          >
+            {!leaves && mediaType === "image" && mediaSrc && (
               <img
                 src={mediaSrc}
                 alt={title || ""}
-                className="rounded-lg max-w-full h-auto"
+                className={classnames("max-w-full h-auto", {
+                  "w-1/2 sm:w-3/5 md:w-auto md:max-w-[30%] md:absolute md:max-h-screen -ml-[1rem] sm:-ml-[5rem] md:-ml-0 md:left-0 md:top-1/2 md:-translate-y-1/2":
+                    mediaAlign === "border",
+                  relative: mediaAlign === "center",
+                })}
               />
             )}
-            {mediaType === "video" && mediaSrc && (
-              <video
-                src={mediaSrc}
-                controls
-                className="rounded-lg max-w-full h-auto"
-              />
+            {!leaves && mediaType === "video" && mediaSrc && (
+              <div className="aspect-video rounded overflow-hidden shadow-lg w-full md:w-4/5">
+                <ReactPlayer
+                  width="100%"
+                  height="100%"
+                  controls
+                  src={mediaSrc}
+                />
+              </div>
+            )}
+            {leaves && (
+              <div className="flex flex-col items-center md:absolute md:right-0 md:bottom-0">
+                <img src={mediaSrc} className="w-[308px] translate-y-[40px]" />
+                <OpeningLeaves
+                  position="relative"
+                  flipY
+                  leftColor={COLORS.complementary}
+                  rightColor={COLORS.light}
+                  top={-155}
+                  left={90}
+                  scale={1.2}
+                  spread={65}
+                  tilt={0}
+                  duration={0.9}
+                  delay={0.1}
+                  open
+                />
+              </div>
             )}
           </div>
         </div>

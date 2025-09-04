@@ -10,7 +10,7 @@ const IndexPage: React.FC<PageProps> = () => {
       <ContentSection
         bgColor={COLORS.light}
         content={`
-          <p class="text-primary text-xl sm:text-2xl font-light">
+          <p class="lg:pr-36 xl:pr-72 text-primary text-xl sm:text-2xl font-light">
             Somos una <span class="font-bold">
               alianza de Fundaciones Comunitarias de México
             </span>, que impulsa el desarrollo sostenible local, mediante el
@@ -31,6 +31,8 @@ const IndexPage: React.FC<PageProps> = () => {
         button1Href="/"
         button2Text="Conoce a las FC socias"
         button2Href="/"
+        mediaSrc="images/section2.png"
+        leaves
       />
       <ContentSection
         bgColor={COLORS.secondary}
@@ -44,6 +46,9 @@ const IndexPage: React.FC<PageProps> = () => {
         `}
         button1Text="Servicios"
         button1Href="/"
+        mediaType="image"
+        mediaSrc="images/section3.png"
+        mediaAlign="border"
         reverse
       />
     </Layout>

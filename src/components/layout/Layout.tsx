@@ -4,13 +4,15 @@ import Footer from "./Footer";
 
 export default function Layout({
   children,
+  darkMode = false,
 }: {
+  darkMode?: boolean;
   children: React.ReactNode;
   hideFooter?: boolean;
 }) {
   return (
     <div className="min-h-screen overflow-x-hidden">
-      <Header />
+      <Header darkMode={darkMode} />
       {children}
       <Footer />
     </div>

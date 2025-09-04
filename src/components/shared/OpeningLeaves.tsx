@@ -11,7 +11,7 @@ type OpeningLeavesProps = {
   bottom?: number | string;
   z?: number;
   className?: string;
-
+  position?: "absolute" | "fixed" | "relative";
   scale?: number; // escala global (1 = 128x131 por hoja)
   spread?: number; // cuánto se abren hacia los lados (cada hoja)
   tilt?: number; // rotación hacia afuera (grados)
@@ -43,9 +43,10 @@ export default function OpeningLeaves({
   delay = 0,
   open = true,
   flipY = false, // << default
+  position = "absolute",
 }: OpeningLeavesProps) {
   const containerStyle: React.CSSProperties = {
-    position: "absolute",
+    position,
     top,
     left,
     right,

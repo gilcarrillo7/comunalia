@@ -1,5 +1,6 @@
 import { Menu, X } from "lucide-react";
 import React, { useState } from "react";
+import classnames from "classnames";
 import { motion, AnimatePresence } from "framer-motion";
 import { Helmet } from "react-helmet";
 import { Link } from "gatsby";
@@ -7,7 +8,7 @@ import Button from "../shared/Button";
 import { SocialIcons } from "./SocialIcons";
 
 import Logo from "../../images/logo.png";
-import LogoOpen from "../../images/logo_white.png";
+import LogoWhite from "../../images/logo_white.png";
 import VectorMenu from "../../images/vectorMenu.png";
 import OpeningLeaves from "../shared/OpeningLeaves";
 
@@ -30,7 +31,7 @@ const navItems = [
   { link: "Contacto", url: "/contacto" },
 ];
 
-export default function Header() {
+export default function Header({ darkMode }: { darkMode: boolean }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -38,7 +39,7 @@ export default function Header() {
       <div className="container mx-auto flex items-center justify-between gap-4 py-4 sm:py-8 md:py-16 relative z-50">
         <Link to="/" onClick={() => setIsOpen(false)} className="shrink-0">
           <img
-            src={isOpen ? LogoOpen : Logo}
+            src={isOpen || darkMode ? LogoWhite : Logo}
             alt="Logo Consejo Cívico"
             className="h-12 md:h-16 lg:h-20 w-auto"
           />
@@ -59,11 +60,15 @@ export default function Header() {
           >
             <span className="block relative w-12 h-12 sm:w-16 sm:h-16">
               <Menu
-                className={`text-primary w-12 h-12 sm:w-16 sm:h-16 absolute inset-0 transition-all duration-300 transform ${
-                  isOpen
-                    ? "opacity-0 scale-75 rotate-45"
-                    : "opacity-100 scale-100 rotate-0"
-                }`}
+                className={classnames(
+                  "w-12 h-12 sm:w-16 sm:h-16 absolute inset-0 transition-all duration-300 transform",
+                  {
+                    "text-white": darkMode,
+                    "text-primary": !darkMode,
+                    "opacity-0 scale-75 rotate-45": isOpen,
+                    "opacity-100 scale-100 rotate-0": !isOpen,
+                  }
+                )}
               />
               <X
                 className={`text-white w-12 h-12 sm:w-16 sm:h-16 absolute inset-0 transition-all duration-300 transform ${
@@ -89,7 +94,7 @@ export default function Header() {
             >
               <div className="container mx-auto h-full relative z-10">
                 <motion.nav
-                  className="pt-20 md:pt-56 lg:px-16 grid grid-cols-1 md:grid-cols-2 gap-y-4 md:gap-y-10 md:gap-x-20 overflow-y-auto max-h-screen"
+                  className="relative pt-20 md:pt-56 lg:px-16 grid grid-cols-1 md:grid-cols-2 gap-y-4 md:gap-y-10 md:gap-x-20 overflow-y-auto min-h-screen"
                   initial="hidden"
                   animate="visible"
                   variants={{
@@ -112,13 +117,43 @@ export default function Header() {
                       >
                         <Link
                           to={item.url}
-                          className="text-xl sm:text-2xl lg:text-[40px] font-light hover:text-tertiary"
+                          className="text-xl sm:text-2xl lg:text-[40px] font-light hover:text-tertiary z-10"
                           onClick={() => setIsOpen(false)}
                         >
                           {item.link}
                         </Link>
                       </motion.div>
                     ))}
+
+                    <div className="w-1/2 absolute bottom-0">
+                      <div className="hidden md:block w-[256px] h-[256px]">
+                        <OpeningLeaves
+                          position="relative"
+                          leftColor="bg-tertiary"
+                          rightColor="white"
+                          top={-135}
+                          left={64}
+                          scale={1}
+                          spread={65}
+                          tilt={0}
+                          duration={0.9}
+                          delay={0.1}
+                          open
+                          flipY
+                        />
+                        <motion.div
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{
+                            duration: 1,
+                            ease: [0.25, 0.5, 0.75, 1],
+                            delay: 0.5,
+                          }}
+                          style={{ transformOrigin: "bottom center" }}
+                          className="w-[256px] aspect-[2/1] bg-primary rounded-t-full"
+                        />
+                      </div>
+                    </div>
                   </div>
 
                   {/* Columna derecha */}
@@ -178,32 +213,6 @@ export default function Header() {
                     </div>
                   </div>
                 </motion.nav>
-                <div className="absolute left-0 bottom-0 hidden md:block w-[256px] h-[256px]">
-                  <OpeningLeaves
-                    leftColor="bg-tertiary"
-                    rightColor="white"
-                    top={-135}
-                    left={64}
-                    scale={1}
-                    spread={65}
-                    tilt={0}
-                    duration={0.9}
-                    delay={0.1}
-                    open
-                    flipY
-                  />
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{
-                      duration: 1,
-                      ease: [0.25, 0.5, 0.75, 1],
-                      delay: 0.5,
-                    }}
-                    style={{ transformOrigin: "bottom center" }}
-                    className="absolute bottom-0 left-0 w-[256px] aspect-[2/1] bg-primary rounded-t-full"
-                  />
-                </div>
               </div>
             </motion.div>
 
