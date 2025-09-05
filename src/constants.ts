@@ -1,4 +1,4 @@
-import { ButtonVariant } from "./shared/Button";
+import { ButtonVariant } from "./components/shared/Button";
 
 export const COLORS = {
   primary: "#78040A",

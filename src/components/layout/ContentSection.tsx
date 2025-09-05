@@ -3,8 +3,8 @@ import classnames from "classnames";
 import ReactPlayer from "react-player";
 import Button from "../shared/Button";
 import { navigate } from "gatsby";
-import { BUTTON_TYPES, COLORS } from "../constants";
 import OpeningLeaves from "../shared/OpeningLeaves";
+import { BUTTON_TYPES, COLORS } from "../../constants";
 
 type MediaType = "image" | "video" | "iframe";
 
@@ -62,8 +62,8 @@ export default function ContentSection({
         >
           <div
             className={classnames("space-y-4", {
-              "md:w-2/3": mediaType !== "video",
-              "md:w-1/2": mediaType === "video",
+              "md:w-1/2": mediaType === "video" || mediaAlign === "center",
+              "md:w-2/3": mediaType !== "video" && mediaAlign !== "center",
             })}
           >
             {title && (
@@ -101,8 +101,8 @@ export default function ContentSection({
           {/* Media */}
           <div
             className={classnames({
-              "md:w-1/3": mediaType !== "video",
-              "md:w-1/2": mediaType === "video",
+              "md:w-1/2": mediaType === "video" || mediaAlign === "center",
+              "md:w-1/3": mediaType !== "video" && mediaAlign !== "center",
               "flex justify-center": mediaAlign === "center",
             })}
           >
@@ -110,10 +110,10 @@ export default function ContentSection({
               <img
                 src={mediaSrc}
                 alt={title || ""}
-                className={classnames("max-w-full h-auto", {
-                  "w-1/2 sm:w-3/5 md:w-auto md:max-w-[30%] md:absolute md:max-h-screen -ml-[1rem] sm:-ml-[5rem] md:-ml-0 md:left-0 md:top-1/2 md:-translate-y-1/2":
+                className={classnames("max-w-full", {
+                  "w-1/2 sm:w-3/5 md:w-auto md:max-w-[30%] md:absolute h-auto md:max-h-screen -ml-[1rem] sm:-ml-[5rem] md:-ml-0 md:left-0 md:top-1/2 md:-translate-y-1/2":
                     mediaAlign === "border",
-                  relative: mediaAlign === "center",
+                  "relative w-auto h-auto": mediaAlign === "center",
                 })}
               />
             )}

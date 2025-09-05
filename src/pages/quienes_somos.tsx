@@ -2,7 +2,7 @@ import * as React from "react";
 import type { HeadFC, PageProps } from "gatsby";
 import Layout from "../components/layout/Layout";
 import ContentSection from "../components/layout/ContentSection";
-import { COLORS } from "../components/constants";
+import { COLORS } from "../constants";
 
 const QuienesSomosPage: React.FC<PageProps> = () => {
   return (
@@ -24,4 +24,4 @@ const QuienesSomosPage: React.FC<PageProps> = () => {
 
 export default QuienesSomosPage;
 
-export const Head: HeadFC = () => <title>Home Page</title>;
+export const Head: HeadFC = () => <title>Quienes somos</title>;

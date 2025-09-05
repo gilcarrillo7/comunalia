@@ -2,7 +2,9 @@ import * as React from "react";
 import type { HeadFC, PageProps } from "gatsby";
 import Layout from "../components/layout/Layout";
 import ContentSection from "../components/layout/ContentSection";
-import { COLORS } from "../components/constants";
+import { COLORS } from "../constants";
+import ImpactoODS from "../components/ImpactoODS";
+import ImpactoResumen from "../components/ImpactoResumen";
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
@@ -51,6 +53,8 @@ const IndexPage: React.FC<PageProps> = () => {
         mediaAlign="border"
         reverse
       />
+      <ImpactoResumen />
+      <ImpactoODS />
     </Layout>
   );
 };
