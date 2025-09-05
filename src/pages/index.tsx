@@ -3,8 +3,59 @@ import type { HeadFC, PageProps } from "gatsby";
 import Layout from "../components/layout/Layout";
 import ContentSection from "../components/layout/ContentSection";
 import { COLORS } from "../constants";
-import ImpactoODS from "../components/ImpactoODS";
-import ImpactoResumen from "../components/ImpactoResumen";
+import ImpactoODS from "../components/sections/ImpactoODS";
+import ImpactoResumen from "../components/sections/ImpactoResumen";
+import DonorsAndAllies from "../components/sections/DonorsAndAllies";
+import SuccessStories from "../SuccessStories";
+
+const logos = [
+  "/alianzas/logo1.png",
+  "/alianzas/logo1.png",
+  "/alianzas/logo1.png",
+  "/alianzas/logo1.png",
+  "/alianzas/logo1.png",
+  "/alianzas/logo1.png",
+  "/alianzas/logo1.png",
+  "/alianzas/logo1.png",
+  "/alianzas/logo1.png",
+  "/alianzas/logo1.png",
+  "/alianzas/logo1.png",
+  "/alianzas/logo1.png",
+  "/alianzas/logo1.png",
+  "/alianzas/logo1.png",
+  "/alianzas/logo1.png",
+  "/alianzas/logo1.png",
+  "/alianzas/logo1.png",
+  "/alianzas/logo1.png",
+  "/alianzas/logo1.png",
+];
+
+const stories = [
+  {
+    image: "images/img1.jpg",
+    title: "Fondo Comunidades Activas",
+    description:
+      "Ante la crisis provocada por el Covid-19, Comunalia activó en 2020 un modelo de intervención ágil...",
+    buttonText: "Leer",
+    slug: "/historias/fondo-comunidades-activas",
+  },
+  {
+    image: "images/img2.png",
+    title: "Signos vitales",
+    description:
+      "Uno de los mayores activos de las fundaciones comunitarias es su conocimiento profundo del territorio...",
+    buttonText: "Leer",
+    slug: "/historias/signos-vitales",
+  },
+  {
+    image: "images/img3.jpg",
+    title: "Círculos de Dar",
+    description:
+      "Impulsar la filantropía comunitaria es clave para crecer la participación e involucrar ciudadanos...",
+    buttonText: "Leer",
+    slug: "/historias/circulos-de-dar",
+  },
+];
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
@@ -12,7 +63,7 @@ const IndexPage: React.FC<PageProps> = () => {
       <ContentSection
         bgColor={COLORS.light}
         content={`
-          <p class="lg:pr-36 xl:pr-72 text-primary text-xl sm:text-2xl font-light">
+          <p class=" text-primary text-xl sm:text-2xl font-light">
             Somos una <span class="font-bold">
               alianza de Fundaciones Comunitarias de México
             </span>, que impulsa el desarrollo sostenible local, mediante el
@@ -55,6 +106,19 @@ const IndexPage: React.FC<PageProps> = () => {
       />
       <ImpactoResumen />
       <ImpactoODS />
+      <SuccessStories
+        title="Historias de éxito"
+        ctaText="Ver todas"
+        items={stories}
+      />
+      <DonorsAndAllies
+        title="Donantes y aliados"
+        images={logos}
+        ctaText="Contacto"
+        ctaHref="/contacto"
+        bottomText="Sé parte y apoya la diversidad de territorios y causas en México."
+        bottomTextHiglight="¡Únete a Comunalia!"
+      />
     </Layout>
   );
 };

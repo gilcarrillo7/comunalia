@@ -5,6 +5,7 @@ export type ButtonVariant =
   | "outline"
   | "primary"
   | "secondary"
+  | "outline-primary"
   | "outline-secondary";
 
 type ButtonProps = {
@@ -40,6 +41,8 @@ const Button = ({
       "bg-secondary border border-secondary text-white hover:bg-white hover:text-secondary",
     "outline-secondary":
       "bg-transparent border border-secondary text-secondary hover:bg-secondary hover:text-white",
+    "outline-primary":
+      "bg-transparent border border-primary text-primary hover:bg-primary hover:text-white",
   };
 
   return (

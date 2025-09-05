@@ -3,7 +3,7 @@ import React, { useMemo, useState } from "react";
 import { useSwipeable } from "react-swipeable";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
-import Button from "./shared/Button";
+import Button from "../shared/Button";
 
 const items: string[] = [
   "impacto/item1.png",
@@ -162,7 +162,7 @@ export default function ImpactoODS() {
             {/* Flechas */}
             {idx < pairs.length - 1 && (
               <button
-                className="absolute right-2 top-1/2 -translate-y-1/2 p-2 text-white/90"
+                className="absolute -right-2 top-1/2 -translate-y-1/2 p-2 text-white/90"
                 onClick={() => setIdx((i) => Math.min(i + 1, pairs.length - 1))}
               >
                 <ChevronRight size={40} />
@@ -170,7 +170,7 @@ export default function ImpactoODS() {
             )}
             {idx > 0 && (
               <button
-                className="absolute left-2 top-1/2 -translate-y-1/2 p-2 text-white/90"
+                className="absolute -left-2 top-1/2 -translate-y-1/2 p-2 text-white/90"
                 onClick={() => setIdx((i) => Math.max(i - 1, 0))}
               >
                 <ChevronLeft size={40} />

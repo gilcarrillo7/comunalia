@@ -18,7 +18,7 @@ type OpeningLeavesProps = {
   duration?: number;
   delay?: number;
   open?: boolean;
-  flipY?: boolean; // << NUEVO: voltear verticalmente (hacia arriba)
+  flipY?: boolean;
 };
 
 const LEAF_PATH =
@@ -42,7 +42,7 @@ export default function OpeningLeaves({
   duration = 0.9,
   delay = 0,
   open = true,
-  flipY = false, // << default
+  flipY = false,
   position = "absolute",
 }: OpeningLeavesProps) {
   const containerStyle: React.CSSProperties = {
@@ -71,15 +71,15 @@ export default function OpeningLeaves({
     clipPath: LEAF_PATH,
   };
 
-  // factor Y: si flipY => -scale (volteadas hacia arriba)
   const sy = flipY ? -scale : scale;
 
   return (
     <div className={`relative ${className}`} style={containerStyle} aria-hidden>
-      {/* Izquierda: pivota en abajo-derecha */}
+      {/* Izquierda */}
       <motion.div
         initial="closed"
-        animate={open ? "open" : "closed"}
+        whileInView={open ? "open" : "closed"}
+        viewport={{ once: true, amount: 0.4 }} // Se dispara cuando 40% es visible
         variants={{
           closed: {
             x: -W * scale,
@@ -106,10 +106,11 @@ export default function OpeningLeaves({
         }}
       />
 
-      {/* Derecha: espejada en X, pivota en abajo-izquierda */}
+      {/* Derecha */}
       <motion.div
         initial="closed"
-        animate={open ? "open" : "closed"}
+        whileInView={open ? "open" : "closed"}
+        viewport={{ once: true, amount: 0.4 }}
         variants={{
           closed: { x: 0, rotate: 0, scaleX: -scale, scaleY: sy, opacity: 0 },
           open: {

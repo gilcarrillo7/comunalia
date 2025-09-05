@@ -2,8 +2,8 @@ import React, { useMemo, useState, useRef, useEffect } from "react";
 import { useSwipeable } from "react-swipeable";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, useInView, animate, useReducedMotion } from "framer-motion";
-import Button from "./shared/Button";
-import Textura from "../images/textura1.svg";
+import Button from "../shared/Button";
+import Textura from "../../images/textura1.svg";
 
 type Item = { value: string; lines: string[] };
 
@@ -137,9 +137,17 @@ export default function ImpactoResumen({
                 }}
               >
                 {i !== 0 && (
-                  <span
+                  <motion.span
                     aria-hidden
                     className="absolute -left-8 top-1/2 hidden h-32 w-px -translate-y-1/2 bg-primary/60 md:block"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true, amount: 0.4 }}
+                    transition={{
+                      duration: 0.45,
+                      ease: "easeOut",
+                      delay: 1.5,
+                    }}
                   />
                 )}
                 <div className="leading-none tracking-tight">
@@ -205,7 +213,7 @@ export default function ImpactoResumen({
               {/* Flechas */}
               {idx > 0 && (
                 <button
-                  className="absolute left-3 top-1/2 -translate-y-1/2 p-2 text-[#78040A]/80"
+                  className="absolute -left-2 top-1/2 -translate-y-1/2 p-2 text-primary/80"
                   onClick={() => setIdx((i) => Math.max(i - 1, 0))}
                   aria-label="Anterior"
                 >
@@ -214,7 +222,7 @@ export default function ImpactoResumen({
               )}
               {idx < items.length - 1 && (
                 <button
-                  className="absolute right-3 top-1/2 -translate-y-1/2 p-2 text-[#78040A]/80"
+                  className="absolute -right-2 top-1/2 -translate-y-1/2 p-2 text-primary/80"
                   onClick={() =>
                     setIdx((i) => Math.min(i + 1, items.length - 1))
                   }
