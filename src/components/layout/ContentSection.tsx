@@ -48,13 +48,13 @@ export default function ContentSection({
 
   return (
     <section
-      className="w-full min-h-screen flex items-center justify-center relative py-16 md:py-40 xl:py-8"
+      className="w-full min-h-screen flex items-center justify-center relative pt-24 pb-16 md:py-40 xl:py-8"
       style={{ backgroundColor: bgColor }}
     >
       <div className="container">
         <div
           className={classnames(
-            "flex flex-col md:flex-row items-center gap-8",
+            "flex flex-col md:flex-row items-center gap-8 md:gap-16 lg:gap-24",
             {
               "md:flex-row-reverse": reverse,
             }
@@ -62,7 +62,8 @@ export default function ContentSection({
         >
           <div
             className={classnames("space-y-4", {
-              "md:w-1/2": mediaType === "video" || mediaAlign === "center",
+              "w-full md:w-1/2":
+                mediaType === "video" || mediaAlign === "center",
               "md:w-2/3": mediaType !== "video" && mediaAlign !== "center",
             })}
           >
@@ -100,7 +101,7 @@ export default function ContentSection({
           </div>
           {/* Media */}
           <div
-            className={classnames({
+            className={classnames("w-full", {
               "md:w-1/2": mediaType === "video" || mediaAlign === "center",
               "md:w-1/3": mediaType !== "video" && mediaAlign !== "center",
               "flex justify-center": mediaAlign === "center",
@@ -118,7 +119,7 @@ export default function ContentSection({
               />
             )}
             {!leaves && mediaType === "video" && mediaSrc && (
-              <div className="aspect-video rounded overflow-hidden shadow-lg w-full md:w-4/5">
+              <div className="w-full h-[325px]">
                 <ReactPlayer
                   width="100%"
                   height="100%"
