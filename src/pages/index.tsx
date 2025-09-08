@@ -71,7 +71,7 @@ const IndexPage: React.FC<PageProps> = () => {
           </p>
         `}
         button1Text="Conoce más"
-        button1Href="/proposito"
+        button1Href="/quienes_somos"
       />
       <ContentSection
         bgColor={COLORS.primary}
@@ -81,9 +81,9 @@ const IndexPage: React.FC<PageProps> = () => {
           </p>
         `}
         button1Text="Quiero ser una FC socia"
-        button1Href="/"
+        button1Href="/quiero_ser_una_fc_socia"
         button2Text="Conoce a las FC socias"
-        button2Href="/"
+        button2Href="/fundaciones_socias"
         mediaSrc="images/section2.png"
         leaves
       />
@@ -98,7 +98,7 @@ const IndexPage: React.FC<PageProps> = () => {
           </p>
         `}
         button1Text="Servicios"
-        button1Href="/"
+        button1Href="/servicios"
         mediaType="image"
         mediaSrc="images/section3.png"
         mediaAlign="border"
@@ -111,6 +111,7 @@ const IndexPage: React.FC<PageProps> = () => {
         ctaText="Ver todas"
         items={stories}
       />
+      <div id="donantes_y_aliados" />
       <DonorsAndAllies
         title="Donantes y aliados"
         images={logos}
@@ -125,4 +126,4 @@ const IndexPage: React.FC<PageProps> = () => {
 
 export default IndexPage;
 
-export const Head: HeadFC = () => <title>Home Page</title>;
+export const Head: HeadFC = () => <title>Home</title>;

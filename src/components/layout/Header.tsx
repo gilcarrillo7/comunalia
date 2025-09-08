@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import classnames from "classnames";
 import { motion, AnimatePresence } from "framer-motion";
 import { Helmet } from "react-helmet";
-import { Link } from "gatsby";
+import { Link, navigate } from "gatsby";
 import Button from "../shared/Button";
 import { SocialIcons } from "./SocialIcons";
 
@@ -15,7 +15,7 @@ import OpeningLeaves from "../shared/OpeningLeaves";
 const headerJson = {
   headerBtn: {
     btnText: "Invierte en comunidades",
-    btnLink: "/",
+    btnLink: "/invierte_en_comunidades",
   },
 };
 const navItems = [
@@ -26,7 +26,7 @@ const navItems = [
   },
   { link: "Servicios", url: "/servicios" },
   { link: "Historias de éxito", url: "/historias_de_exito" },
-  { link: "Donantes y aliados", url: "/donantes_y_aliados" },
+  { link: "Donantes y aliados", url: "/#donantes_y_aliados" },
   {
     link: "Biblioteca virtual",
     url: "https://comunalia.org.mx/biblioteca-virtual/",
@@ -53,6 +53,7 @@ export default function Header({ darkMode }: { darkMode: boolean }) {
               variant="secondary"
               className="text-sm sm:text-xl !px-2 sm:!px-4"
               squaered
+              onClick={() => navigate(headerJson.headerBtn.btnLink)}
             >
               {headerJson.headerBtn.btnText}
             </Button>
@@ -203,7 +204,10 @@ export default function Header({ darkMode }: { darkMode: boolean }) {
                           >
                             Ingresa al HUB
                           </Button>
-                          <Button variant="outline">
+                          <Button
+                            variant="outline"
+                            onClick={() => navigate("/quiero_ser_una_fc_socia")}
+                          >
                             Quiero ser una FC socia
                           </Button>
                         </div>

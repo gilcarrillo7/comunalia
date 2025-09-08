@@ -3,8 +3,9 @@ import { motion } from "framer-motion";
 import Layout from "../components/layout/Layout";
 import Button from "../components/shared/Button";
 import Imagen from "../images/contacto.png";
+import { HeadFC, PageProps } from "gatsby";
 
-export default function Contacto() {
+const IndexPage: React.FC<PageProps> = () => {
   const WP_BASE_URL = "";
   const CF7_FORM_ID = "";
   const CF7_ENDPOINT = `${WP_BASE_URL}/wp-json/contact-form-7/v1/contact-forms/${CF7_FORM_ID}/feedback`;
@@ -134,10 +135,7 @@ export default function Contacto() {
                     required
                   />
                 </motion.div>
-                <motion.div
-                  className="text-right flex items-end md:w-1/2"
-                  {...fadeInUp(0.4)}
-                >
+                <div className="text-right flex items-end md:w-1/2">
                   <img
                     src={Imagen}
                     alt="Contacto"
@@ -160,7 +158,7 @@ export default function Contacto() {
                   {status === "error" && (
                     <p className="text-red-300 mt-2">{serverMessage}</p>
                   )}
-                </motion.div>
+                </div>
               </div>
             </form>
           </div>
@@ -168,4 +166,7 @@ export default function Contacto() {
       </section>
     </Layout>
   );
-}
+};
+export default IndexPage;
+
+export const Head: HeadFC = () => <title>Contacto</title>;

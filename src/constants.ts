@@ -9,7 +9,8 @@ export const COLORS = {
   light: "#FBEADE",
 };
 export const BUTTON_TYPES = new Map<string, ButtonVariant>([
-  [COLORS.light, "outline-secondary"],
+  [COLORS.light, "outline-primary"],
   [COLORS.primary, "outline"],
   [COLORS.secondary, "primary"],
+  ["white", "primary"],
 ]);
