@@ -27,7 +27,10 @@ const navItems = [
   { link: "Servicios", url: "/servicios" },
   { link: "Historias de éxito", url: "/historias_de_exito" },
   { link: "Donantes y aliados", url: "/donantes_y_aliados" },
-  { link: "Biblioteca virtual", url: "/biblioteca_virtual" },
+  {
+    link: "Biblioteca virtual",
+    url: "https://comunalia.org.mx/biblioteca-virtual/",
+  },
   { link: "Contacto", url: "/contacto" },
 ];
 
@@ -190,7 +193,16 @@ export default function Header({ darkMode }: { darkMode: boolean }) {
                         </p>
 
                         <div className="flex flex-col gap-4 mb-8">
-                          <Button variant="outline">Ingresa al HUB</Button>
+                          <Button
+                            variant="outline"
+                            onClick={() =>
+                              window.open(
+                                "https://sites.google.com/comunalia.org.mx/hub/inicio"
+                              )
+                            }
+                          >
+                            Ingresa al HUB
+                          </Button>
                           <Button variant="outline">
                             Quiero ser una FC socia
                           </Button>

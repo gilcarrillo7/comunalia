@@ -27,7 +27,7 @@ export default function DonorsAndAllies({
 
   return (
     <motion.section
-      className={`w-full min-h-screen py-8 ${className}`}
+      className={`w-full min-h-screen flex items-center py-8 ${className}`}
       initial={{ opacity: 0, y: reduce ? 0 : 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
