@@ -176,7 +176,7 @@ export default function ContentSection({
                 className={classnames("max-w-full", {
                   "w-1/2 sm:w-3/5 md:w-auto md:max-w-[30%] md:absolute h-auto md:max-h-screen -ml-[1rem] sm:-ml-[5rem] md:-ml-0 md:left-0 md:top-1/2 md:-translate-y-1/2":
                     mediaAlign === "border",
-                  "w-1/2 sm:w-3/5 md:w-auto md:max-w-[30%] md:absolute h-auto md:max-h-screen -ml-[1rem] sm:-ml-[5rem] md:-ml-0 md:right-0 md:top-1/2 md:-translate-y-1/2":
+                  "ml-auto w-3/5 md:w-auto md:max-w-[30%] md:absolute h-auto md:max-h-screen right-0 md:top-1/2 md:-translate-y-1/2 -mr-4":
                     mediaAlign === "border-left",
                   "relative w-auto h-auto": mediaAlign === "center",
                 })}
