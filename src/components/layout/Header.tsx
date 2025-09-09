@@ -25,13 +25,14 @@ const navItems = [
     url: "/fundaciones_socias",
   },
   { link: "Servicios", url: "/servicios" },
-  { link: "Historias de éxito", url: "/historias_de_exito" },
+  { link: "Historias de éxito", url: "/#historias_de_exito" },
   { link: "Donantes y aliados", url: "/#donantes_y_aliados" },
   {
     link: "Biblioteca virtual",
     url: "https://comunalia.org.mx/biblioteca-virtual/",
   },
   { link: "Contacto", url: "/contacto" },
+  { link: "English", url: "/en" },
 ];
 
 export default function Header({ darkMode }: { darkMode: boolean }) {
@@ -177,7 +178,9 @@ export default function Header({ darkMode }: { darkMode: boolean }) {
                       >
                         <Link
                           to={item.url}
-                          className="text-xl sm:text-2xl lg:text-[40px] font-light hover:text-tertiary"
+                          className={`text-xl sm:text-2xl lg:text-[40px] font-light hover:text-tertiary ${
+                            item.link === "English" ? "text-primary" : ""
+                          }`}
                           onClick={() => setIsOpen(false)}
                         >
                           {item.link}

@@ -201,7 +201,12 @@ export default function ImpactoODS() {
           viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.45, ease: "easeOut" }}
         >
-          <Button variant="outline">Informe voluntario</Button>
+          <Button
+            variant="outline"
+            onClick={() => window.open("/informe_voluntario.pdf")}
+          >
+            Informe voluntario
+          </Button>
         </motion.div>
       </div>
     </section>

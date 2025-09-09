@@ -43,7 +43,7 @@ export default function SuccessStories({
 
   return (
     <motion.section
-      className={`w-full md:min-h-screen py-10 md:py-14 bg-light ${className}`}
+      className={`w-full flex items-center md:min-h-screen py-10 md:py-14 bg-light ${className}`}
       initial={{ opacity: 0, y: reduce ? 0 : 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
