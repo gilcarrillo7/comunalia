@@ -165,6 +165,7 @@ const foundations: FoundationItem[] = [
     href: "https://fundacion-oaxaca.org/",
   },
   {
+    image: "/fundaciones/fundacion15.png",
     imageAlt: "Fundación Comunitaria Puebla I.A.P.",
     title: "Fundación Comunitaria Puebla I.A.P.",
     description:
@@ -172,6 +173,7 @@ const foundations: FoundationItem[] = [
     href: "https://fundacionpuebla.org/",
   },
   {
+    image: "/fundaciones/fundacion16.png",
     imageAlt: "Fondo de Inversión Social Potosino",
     title: "Fondo de Inversión Social Potosino",
     description:
@@ -191,7 +193,7 @@ const FundacionesSociasPage: React.FC<PageProps> = () => {
       <ContentSection
         bgColor={COLORS.primary}
         content={`
-          <p class="text-white text-xl sm:text-2xl font-light">
+          <p class="text-white">
             Somos la única red con <span class="font-semibold">13 años  fortaleciendo fundaciones  comunitarias</span> para la transformación social en México. 
           </p>
         `}
@@ -202,7 +204,7 @@ const FundacionesSociasPage: React.FC<PageProps> = () => {
 
       <div className="flex flex-col md:flex-row w-full">
         <div className="w-full md:w-1/2 flex bg-tertiary justify-center items-center px-12 py-16">
-          <p className="text-primary font-light text-2xl md:text-2xl">
+          <p className="text-primary font-light text-2xl md:text-2xl lg:text-4xl">
             Conoce nuestras 16 fundaciones asociadas:
           </p>
         </div>

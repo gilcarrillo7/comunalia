@@ -20,10 +20,13 @@ type SectionProps = {
   mediaSrc?: string;
   mediaType?: MediaType;
   reverse?: boolean;
+  reverseMobile?: boolean;
   bgColor?: string;
   mediaAlign?: "center" | "border" | "border-left";
   leaves?: boolean;
   titleClassname?: string;
+  containerClassname?: string;
+  mediaClassname?: string;
 };
 
 /** Animaciones suaves */
@@ -45,10 +48,13 @@ export default function ContentSection({
   mediaSrc,
   mediaType = "image",
   reverse = false,
+  reverseMobile = false,
   bgColor = "light",
   mediaAlign = "center",
   leaves = false,
   titleClassname = "text-tertiary",
+  containerClassname = "",
+  mediaClassname = "",
 }: SectionProps) {
   const handleButtonClick = (buttonLink: string) => {
     if (!buttonLink) return;
@@ -61,14 +67,15 @@ export default function ContentSection({
 
   return (
     <section
-      className="w-full min-h-screen flex items-center justify-center relative pt-24 pb-16 md:py-44"
+      className={`${containerClassname} w-full min-h-screen flex items-center justify-center relative pt-24 pb-16 md:py-28`}
       style={{ backgroundColor: bgColor }}
     >
       <div className="container">
         <motion.div
           className={classnames(
             "flex flex-col md:flex-row items-center gap-8 md:gap-16 lg:gap-24",
-            { "md:flex-row-reverse": reverse }
+            { "md:flex-row-reverse": reverse },
+            { "flex-col-reverse md:flex-row": reverseMobile }
           )}
           variants={containerV}
           initial="hidden"
@@ -109,7 +116,7 @@ export default function ContentSection({
                     transition: { type: "spring", stiffness: 140, damping: 18 },
                   },
                 }}
-                className="text-base text-primary"
+                className="text-xl sm:text-2xl md:text-3xl font-light"
                 dangerouslySetInnerHTML={{ __html: content as string }}
               />
             )}
@@ -124,7 +131,6 @@ export default function ContentSection({
                     transition: { type: "spring", stiffness: 140, damping: 18 },
                   },
                 }}
-                whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.98 }}
               >
                 <Button
@@ -146,7 +152,6 @@ export default function ContentSection({
                     transition: { type: "spring", stiffness: 140, damping: 18 },
                   },
                 }}
-                whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.98 }}
               >
                 <Button
@@ -173,7 +178,7 @@ export default function ContentSection({
                 src={mediaSrc}
                 alt={title || ""}
                 loading="lazy"
-                className={classnames("max-w-full", {
+                className={classnames(`${mediaClassname} max-w-full`, {
                   "w-1/2 sm:w-3/5 md:w-auto md:max-w-[30%] md:absolute h-auto md:max-h-screen -ml-[1rem] sm:-ml-[5rem] md:-ml-0 md:left-0 md:top-1/2 md:-translate-y-1/2":
                     mediaAlign === "border",
                   "ml-auto w-3/5 md:w-auto md:max-w-[30%] md:absolute h-auto md:max-h-screen right-0 md:top-1/2 md:-translate-y-1/2 -mr-4":
@@ -201,12 +206,10 @@ export default function ContentSection({
             )}
 
             {leaves && (
-              <div
-                className="flex flex-col items-center md:absolute md:right-0 md:bottom-0"
-              >
+              <div className="flex flex-col items-center md:absolute md:right-0 md:bottom-0">
                 <img
                   src={mediaSrc}
-                  className="w-[308px] translate-y-[40px]"
+                  className="max-w-full md:w-[400px] translate-y-[50px]"
                   alt=""
                 />
                 <OpeningLeaves
@@ -214,9 +217,9 @@ export default function ContentSection({
                   flipY
                   leftColor={COLORS.complementary}
                   rightColor={COLORS.light}
-                  top={-155}
-                  left={90}
-                  scale={1.2}
+                  top={-200}
+                  left={120}
+                  scale={1.5}
                   spread={65}
                   tilt={0}
                   duration={0.9}

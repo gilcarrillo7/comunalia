@@ -15,7 +15,7 @@ const QuienesSomosPage: React.FC<PageProps> = () => {
         bgColor={COLORS.primary}
         title="Propósito"
         content={`
-          <p class="text-white text-xl sm:text-2xl font-light">
+          <p class="text-white">
             En Comunalia conectamos lo local con lo global, fortaleciendo y visibilizando la contribución de las Fundaciones Comunitarias, a la mejora de la calidad de vida de las comunidades en pro del desarrollo sostenible de México.
           </p>
         `}

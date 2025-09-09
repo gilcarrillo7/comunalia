@@ -79,7 +79,7 @@ export default function Team({ title, members, className = "" }: TeamProps) {
           })}
         </div>
       </div>
-      <img src={Textura} className="absolute bottom-0 right-0" alt="" />
+      <img src={Textura} className="absolute bottom-0 right-0 w-full" alt="" />
     </section>
   );
 }

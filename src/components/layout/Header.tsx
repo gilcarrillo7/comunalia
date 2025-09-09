@@ -39,7 +39,12 @@ export default function Header({ darkMode }: { darkMode: boolean }) {
 
   return (
     <header className="bg-transparent text-white w-full absolute top-0 left-0 z-50">
-      <div className="container mx-auto flex items-center justify-between gap-4 py-4 sm:py-8 md:py-16 relative z-50">
+      <div
+        className={classnames(
+          "container mx-auto flex items-center justify-between gap-4 py-4 sm:py-8 relative z-50",
+          { "bg-secondary": isOpen }
+        )}
+      >
         <Link to="/" onClick={() => setIsOpen(false)} className="shrink-0">
           <img
             src={isOpen || darkMode ? LogoWhite : Logo}
@@ -94,11 +99,11 @@ export default function Header({ darkMode }: { darkMode: boolean }) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 w-full h-screen bg-secondary text-white z-40"
+              className="fixed inset-0 w-full h-screen bg-secondary text-white z-40 overflow-y-auto md:overflow-y-hidden"
             >
               <div className="container mx-auto h-full relative z-10">
                 <motion.nav
-                  className="relative pt-20 md:pt-56 lg:px-16 grid grid-cols-1 md:grid-cols-2 gap-y-4 md:gap-y-10 md:gap-x-20 overflow-y-auto min-h-screen"
+                  className="relative pt-20 md:pt-56 lg:px-16 grid grid-cols-1 md:grid-cols-2 gap-y-4 md:gap-y-10 md:gap-x-20 min-h-screen"
                   initial="hidden"
                   animate="visible"
                   variants={{

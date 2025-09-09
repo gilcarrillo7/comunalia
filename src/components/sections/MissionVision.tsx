@@ -100,11 +100,11 @@ export default function MissionVision({
               viewport={{ once: true, amount: 0.3 }}
               className="basis-1/2 md:shrink-0 bg-white text-primary flex items-center justify-center"
             >
-              <div className="p-4 md:w-[200px]">
-                <h2 className="text-3xl md:text-4xl font-semibold text-primary">
+              <div className="p-4 md:w-[250px]">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-primary">
                   {missionTitle}
                 </h2>
-                <p className="mt-3 text-base md:text-lg font-light leading-relaxed">
+                <p className="mt-3 text-base md:text-lg lg:text-xl font-light leading-relaxed">
                   {missionDescription}
                 </p>
               </div>
@@ -119,10 +119,10 @@ export default function MissionVision({
             className="bg-tertiary px-4 py-8 md:py-0 text-primary md:h-[400px] flex items-center justify-center"
           >
             <div className="">
-              <h3 className="text-3xl md:text-4xl font-semibold">
+              <h3 className="text-3xl md:text-4xl lg:text-5xl font-semibold">
                 {visionTitle}
               </h3>
-              <p className="mt-3 text-base font-light md:text-lg leading-relaxed max-w-prose">
+              <p className="mt-3 text-base font-light md:text-lg lg:text-xl leading-relaxed max-w-prose">
                 {visionDescription}
               </p>
             </div>

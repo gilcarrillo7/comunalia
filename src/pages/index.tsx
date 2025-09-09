@@ -63,7 +63,7 @@ const IndexPage: React.FC<PageProps> = () => {
       <ContentSection
         bgColor={COLORS.light}
         content={`
-          <p class=" text-primary text-xl sm:text-2xl font-light">
+          <p class="text-primary">
             Somos una <span class="font-bold">
               alianza de Fundaciones Comunitarias de México
             </span>, que impulsa el desarrollo sostenible local, mediante el
@@ -76,7 +76,7 @@ const IndexPage: React.FC<PageProps> = () => {
       <ContentSection
         bgColor={COLORS.primary}
         content={`
-          <p class="text-white text-xl sm:text-2xl font-light">
+          <p class="text-white">
             Las Fundaciones Comunitarias (FC) son organizaciones especializadas en identificar las fortalezas y necesidades de un territorio especifíco. Su objetivo es impulsar soluciones sociales, mediante la creación de aliazas, coordinación de esfuerzos y movilización de recursos, para lograr desarrollo sostenible en la comunidad.
           </p>
         `}
@@ -90,7 +90,7 @@ const IndexPage: React.FC<PageProps> = () => {
       <ContentSection
         bgColor={COLORS.secondary}
         content={`
-          <p class="text-white text-xl sm:text-2xl font-light">
+          <p class="text-white">
             Impulsa cambios sociales positivos en México apoyando la diversidad de territorios y causas locales. Conecta tu Responsabilidad Social Empresarial (RSE) con soluciones diseñadas desde las comunidades.
           </p>
           <p class="mt-6 text-white text-xl sm:text-2xl font-semibold">

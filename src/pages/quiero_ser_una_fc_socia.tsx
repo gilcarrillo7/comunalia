@@ -7,11 +7,14 @@ import { COLORS } from "../constants";
 const IndexPage: React.FC<PageProps> = () => {
   return (
     <Layout darkMode>
-      <ContentSection
-        bgColor={COLORS.primary}
-        title="Impulsamos nuevas Fundaciones Comunitarias en México"
-        content={`
-        <div class="text-white font-light">
+      <div className="flex flex-col items-center">
+        <ContentSection
+          containerClassname="lg:pt-40"
+          bgColor={COLORS.primary}
+          title="Impulsamos nuevas Fundaciones Comunitarias en México"
+          titleClassname="text-2xl md:text-3xl text-tertiary"
+          content={`
+        <div class="text-white font-light text-base md:text-lg">
         <p>Creemos en el poder de las comunidades para transformar su entorno.</p>
         <p class="mb-4">
           Por eso, impulsamos un programa dirigido a fortalecer e integrar nuevas fundaciones comunitarias al ecosistema social del país.
@@ -37,11 +40,14 @@ const IndexPage: React.FC<PageProps> = () => {
         </p>
         </div>
         `}
-        button1Text="Quiero más información"
-        button1Href="/"
-        mediaType="image"
-        mediaSrc="/images/fcsocia.png"
-      />
+          button1Text="Quiero más información"
+          button1Href="/"
+          mediaType="image"
+          mediaSrc="/images/fcsocia.png"
+          mediaClassname="w-[80%] md:w-auto"
+          reverseMobile
+        />
+      </div>
     </Layout>
   );
 };

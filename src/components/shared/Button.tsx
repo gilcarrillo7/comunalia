@@ -30,7 +30,7 @@ const Button = ({
   disabled = false,
 }: ButtonProps) => {
   const baseClass =
-    "px-6 py-2 transition text-lg sm:text-xl w-full sm:min-w-[220px] sm:w-auto ";
+    "px-6 py-2 transition text-lg sm:text-xl lg:text-2xl w-full sm:min-w-[220px] sm:w-auto ";
 
   const variantClasses = {
     outline:

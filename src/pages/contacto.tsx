@@ -79,9 +79,9 @@ const IndexPage: React.FC<PageProps> = () => {
           className="hidden md:block absolute left-0 bottom-0 z-0"
         />
         <div className="container z-10">
-          <div className="max-w-3xl ml-auto text-lg lg:text-xl">
+          <div className="max-w-3xl ml-auto text-lg md:text-xl lg:text-2xl md:mr-24">
             <motion.h2
-              className="text-left text-2xl md:text-3xl lg:text-4xl text-tertiary mb-12 md:mb-24"
+              className="text-left text-2xl md:text-3xl lg:text-5xl text-tertiary mb-12 md:mb-24"
               {...fadeInUp(0)}
             >
               Contacto
@@ -96,12 +96,13 @@ const IndexPage: React.FC<PageProps> = () => {
                     id="name"
                     name="your-name"
                     type="text"
-                    className="bg-transparent border-b border-white focus:outline-none py-2 text-tertiary placeholder-tertiary"
+                    className="bg-transparent border-0 focus:outline-none py-2 text-tertiary placeholder-tertiary"
                     placeholder="Nombre"
                     value={form["your-name"]}
                     onChange={onChange}
                     required
                   />
+                  <div className="border-white border-b w-full"/>
                 </motion.div>
                 <motion.div
                   className="flex flex-col md:w-1/2"
@@ -111,12 +112,13 @@ const IndexPage: React.FC<PageProps> = () => {
                     id="email"
                     name="your-email"
                     type="email"
-                    className="bg-transparent border-b border-white focus:outline-none py-2 text-tertiary placeholder-tertiary"
+                    className="bg-transparent border-0 focus:outline-none py-2 text-tertiary placeholder-tertiary"
                     placeholder="Email"
                     value={form["your-email"]}
                     onChange={onChange}
                     required
                   />
+                  <div className="border-white border-b w-full"/>
                 </motion.div>
               </div>
               <div className="w-full flex flex-col md:flex-row gap-12 md:gap-24 mb-12 md:mb-24">
@@ -128,12 +130,13 @@ const IndexPage: React.FC<PageProps> = () => {
                     id="message"
                     name="your-message"
                     rows={1}
-                    className="bg-transparent border-b border-white focus:outline-none py-2 text-tertiary placeholder-tertiary resize-none"
+                    className="bg-transparent border-0 focus:outline-none py-2 text-tertiary placeholder-tertiary resize-none"
                     placeholder="Mensaje"
                     value={form["your-message"]}
                     onChange={onChange}
                     required
                   />
+                  <div className="border-white border-b w-full"/>
                 </motion.div>
                 <div className="text-right flex items-end md:w-1/2">
                   <img

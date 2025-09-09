@@ -65,7 +65,7 @@ export default function Values({ title, values, className = "" }: ValuesProps) {
       <div className="absolute z-0 left-0 top-[calc(180px-50vw)] sm:top-[calc(215px-50vw)] h-[50vw] w-[100vw] bg-primary rounded-bl-full rounded-br-full " />
       {/* Semicírculo superior */}
       <div className="relative pb-3">
-        <h2 className="z-10 text-center text-white text-3xl md:text-4xl font-medium tracking-tight">
+        <h2 className="z-10 text-center text-white text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight">
           {title}
         </h2>
         <div className="relative flex justify-center h-[105px]">

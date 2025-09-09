@@ -11,7 +11,7 @@ const IndexPage: React.FC<PageProps> = () => {
     <Layout>
       <ContentSection
         bgColor={COLORS.light}
-        titleClassname="text-primary -mb-4"
+        titleClassname="text-primary -mb-4 sm:!text-4xl"
         title="1. Fondo de fortalecimiento para las Fundaciones Comunitarias"
         content={`
         <div class="text-primary font-light">
@@ -29,11 +29,12 @@ const IndexPage: React.FC<PageProps> = () => {
         button1Href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3PsJ5DE5s19SlhsV2tcX2jjz70YJbinfy9GXhEEEebjMtwha4KaIrwKjBiIFnyPQL6SrSsHHFc"
         mediaType="image"
         mediaSrc="/images/invierte1.png"
+        mediaClassname="md:w-[80%]"
       />
       <ContentSection
         bgColor="white"
         title="2. Fondos temáticos de inversión social"
-        titleClassname="text-primary -mb-4"
+        titleClassname="text-primary -mb-4 sm:!text-4xl"
         content={`
         <div class="text-primary font-light">
         <p class="text-lg md:text-2xl mb-6">
@@ -64,7 +65,7 @@ const IndexPage: React.FC<PageProps> = () => {
       <ContentSection
         bgColor={COLORS.secondary}
         title="3. Servicios de Localización"
-        titleClassname="text-primary -mb-4"
+        titleClassname="text-primary -mb-4 sm:!text-4xl"
         content={`
         <div class="text-white font-light">
         <p class="text-lg md:text-2xl font-medium">Canaliza recursos de forma estratégica con asesoría experta.</p>

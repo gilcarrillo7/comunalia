@@ -30,6 +30,7 @@ const IndexPage: React.FC<PageProps> = () => {
         button1Href="/contacto"
         mediaType="image"
         mediaSrc="/images/servicios1.png"
+        mediaClassname="md:!absolute md:right-0 md:bottom-0 md:w-[600px]"
       />
       <ContentSection
         bgColor={COLORS.light}
@@ -37,9 +38,9 @@ const IndexPage: React.FC<PageProps> = () => {
         titleClassname="text-primary -mb-4"
         content={`
         <div class="text-primary font-light">
-        <p class="text-lg md:text-2xl mb-6 text-secondary">Fomentamos el aprendizaje entre pares como estrategia para el fortalecimiento de las fundaciones socios, a través de:</p>
+        <p class="text-lg md:text-2xl lg:text-3xl mb-6 text-secondary">Fomentamos el aprendizaje entre pares como estrategia para el fortalecimiento de las fundaciones socios, a través de:</p>
         
-        <p class="mb-4 text-base md:text-lg">
+        <p class="mb-4 text-base md:text-lg lg:text-xl">
         • Comunidades de práctica<br/>
         • Pasantías<br/>
         • Comunalia HUB<br/>
@@ -60,7 +61,7 @@ const IndexPage: React.FC<PageProps> = () => {
         titleClassname="text-primary -mb-4"
         content={`
         <div class="text-primary font-light">
-        <p class="text-lg md:text-2xl mb-6 text-secondary">visibilizar la contribución de las fundaciones comunitarias en el ecosistema social, como:</p>
+        <p class="text-lg md:text-2xl lg:text-3xl mb-6 text-secondary">visibilizar la contribución de las fundaciones comunitarias en el ecosistema social, como:</p>
         
         <p class="mb-4 text-base md:text-lg">
         • Eventos nacionales e internacionales<br/>
@@ -76,12 +77,13 @@ const IndexPage: React.FC<PageProps> = () => {
         button1Href="/contacto"
         mediaType="image"
         mediaSrc="/images/servicios3.png"
+        mediaClassname="w-[60%]"
       />
       <div className="flex">
         <div className="relative basis-2/3 md:basis-3/4 bg-secondary flex items-center pt-4">
           <img src={Textura} className="absolute left-0 top-0 z-0" />
           <div className="container z-10">
-            <p className="text-white text-base md:text-xl mb-4 text-center md:text-left">
+            <p className="text-white text-base md:text-xl lg:text-2xl mb-4 md:mb-8 text-center md:text-left">
               Soy fundación asociada
             </p>
             <div className="flex flex-col md:flex-row gap-4 md:gap-8 mb-8 md:justify-around">

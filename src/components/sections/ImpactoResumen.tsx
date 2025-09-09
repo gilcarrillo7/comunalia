@@ -102,17 +102,17 @@ export default function ImpactoResumen({
 
   return (
     <section className="relative">
-      <div className="relative bg-tertiary text-primary overflow-hidden">
+      <div className="relative bg-tertiary text-primary">
         {/* Textura de fondo */}
         <img
           src={Textura}
-          className="absolute bottom-0 right-0 w-full pointer-events-none select-none"
+          className="absolute bottom-0 right-0  w-full pointer-events-none select-none"
           alt=""
         />
 
-        <div className="relative container mx-auto px-4 py-12 md:py-16">
+        <div className="relative container mx-auto px-4 py-8 md:py-12">
           <motion.h2
-            className="text-xl md:text-2xl font-normal text-center md:text-left"
+            className="text-xl sm:text-2xl md:text-3xl font-normal text-center md:text-left"
             initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.35 }}
@@ -122,7 +122,7 @@ export default function ImpactoResumen({
           </motion.h2>
 
           {/* DESKTOP */}
-          <div className="mt-8 hidden md:flex gap-8 justify-around">
+          <div className="mt-8 md:mt-16 hidden md:flex gap-8 justify-around">
             {items.map((it, i) => (
               <motion.div
                 key={i}

@@ -1,5 +1,5 @@
 // ImpactoODS.tsx
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useSwipeable } from "react-swipeable";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
@@ -19,16 +19,29 @@ const items: string[] = [
 export default function ImpactoODS() {
   const [idx, setIdx] = useState(0);
 
+  // Desktop: grupos de 2 (para 2 imágenes por columna)
   const pairs = useMemo(() => {
     const res: string[][] = [];
     for (let i = 0; i < items.length; i += 2) res.push(items.slice(i, i + 2));
     return res;
   }, []);
 
+  // Mobile: grupos de 4 (para 2x2 por slide)
+  const mobQuads = useMemo(() => {
+    const res: string[][] = [];
+    for (let i = 0; i < items.length; i += 4) res.push(items.slice(i, i + 4));
+    return res;
+  }, []);
+
   const desktopCols = pairs.slice(0, 4);
 
+  // Asegura que idx nunca exceda el total de slides móviles
+  useEffect(() => {
+    if (idx > mobQuads.length - 1) setIdx(Math.max(mobQuads.length - 1, 0));
+  }, [mobQuads.length, idx]);
+
   const handlers = useSwipeable({
-    onSwipedLeft: () => setIdx((i) => Math.min(i + 1, pairs.length - 1)),
+    onSwipedLeft: () => setIdx((i) => Math.min(i + 1, mobQuads.length - 1)),
     onSwipedRight: () => setIdx((i) => Math.max(i - 1, 0)),
     trackMouse: true,
   });
@@ -39,11 +52,11 @@ export default function ImpactoODS() {
   };
 
   return (
-    <section className="min-h-screen bg-primary text-white">
+    <section className="min-h-screen bg-primary text-white flex items-center">
       <div className="container mx-auto px-4 py-12 md:py-16">
         {/* Encabezado */}
         <motion.h2
-          className="text-2xl md:text-3xl font-normal leading-tight"
+          className="text-2xl sm:text-3xl md:text-4xl font-normal leading-tight"
           initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
@@ -53,7 +66,7 @@ export default function ImpactoODS() {
         </motion.h2>
 
         <motion.p
-          className="mt-3 text-white/90 md:max-w-3xl text-lg md:text-xl font-light"
+          className="mt-3 text-white/90 md:max-w-4xl text-lg sm:text-xl md:text-2xl font-light"
           initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
@@ -103,6 +116,7 @@ export default function ImpactoODS() {
           ))}
         </motion.div>
 
+        {/* MOBILE: carrusel con 4 elementos por slide (grid 2x2) */}
         <div className="md:hidden mt-10" {...handlers}>
           <div
             className="relative overflow-hidden"
@@ -113,41 +127,40 @@ export default function ImpactoODS() {
               className="flex transition-transform duration-500 ease-in-out"
               style={{ transform: `translateX(-${idx * 100}%)` }}
             >
-              {pairs.map((col, ci) => (
+              {mobQuads.map((quad, qi) => (
                 <div
-                  key={`slide-${ci}`}
+                  key={`slide-${qi}`}
                   className="shrink-0 w-full px-2"
                   role="group"
                   aria-roledescription="slide"
-                  aria-label={`Columna ${ci + 1}`}
+                  aria-label={`Slide ${qi + 1}`}
                 >
                   <motion.div
-                    className="flex flex-col items-center gap-8 py-4"
+                    className="grid grid-cols-2 gap-6 py-4"
                     initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: idx === ci ? 1 : 0.65, y: 0 }}
+                    animate={{ opacity: idx === qi ? 1 : 0.65, y: 0 }}
                     transition={{ duration: 0.35, ease: "easeOut" }}
                   >
-                    {col.map((src, si) => (
+                    {quad.map((src, si) => (
                       <motion.div
                         className="text-center"
-                        key={`img-wrap-${ci}-${si}`}
+                        key={`mob-wrap-${qi}-${si}`}
                         initial={{ opacity: 0, y: 10, scale: 0.97 }}
                         animate={{
-                          opacity: idx === ci ? 1 : 0.85,
+                          opacity: idx === qi ? 1 : 0.85,
                           y: 0,
                           scale: 1,
                         }}
                         transition={{
                           duration: 0.35,
                           ease: "easeOut",
-                          delay: si * 0.05,
+                          delay: (si % 2) * 0.05,
                         }}
                         whileTap={{ scale: 0.98 }}
                       >
                         <motion.img
-                          key={`mob-img-${ci}-${si}`}
                           src={src}
-                          alt={`ODS ${ci * 2 + si + 1}`}
+                          alt={`ODS ${qi * 4 + si + 1}`}
                           className="mx-auto"
                           loading="lazy"
                           draggable={false}
@@ -160,17 +173,19 @@ export default function ImpactoODS() {
             </div>
 
             {/* Flechas */}
-            {idx < pairs.length - 1 && (
+            {idx < mobQuads.length - 1 && (
               <button
-                className="absolute -right-2 top-1/2 -translate-y-1/2 p-2 text-white/90"
-                onClick={() => setIdx((i) => Math.min(i + 1, pairs.length - 1))}
+                className="absolute -right-5 top-1/2 -translate-y-1/2 p-2 text-white/90"
+                onClick={() =>
+                  setIdx((i) => Math.min(i + 1, mobQuads.length - 1))
+                }
               >
                 <ChevronRight size={40} />
               </button>
             )}
             {idx > 0 && (
               <button
-                className="absolute -left-2 top-1/2 -translate-y-1/2 p-2 text-white/90"
+                className="absolute -left-5 top-1/2 -translate-y-1/2 p-2 text-white/90"
                 onClick={() => setIdx((i) => Math.max(i - 1, 0))}
               >
                 <ChevronLeft size={40} />

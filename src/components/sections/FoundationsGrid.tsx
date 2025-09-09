@@ -34,7 +34,7 @@ export default function FoundationsGrid({ items, className = "" }: Props) {
         viewport={{ once: true, amount: 0.2 }}
       >
         {items.map((it, idx) => (
-          <motion.article
+          <motion.a
             key={`${it.title}-${idx}`}
             variants={{
               hidden: { opacity: 0, y: 12 },
@@ -48,6 +48,9 @@ export default function FoundationsGrid({ items, className = "" }: Props) {
             whileTap={{ scale: 0.995 }}
             transition={{ type: "spring", stiffness: 300, damping: 22 }}
             className="flex items-center justify-between gap-6"
+            href={it.href}
+            target="_blank"
+            rel="noopener noreferrer"
           >
             {/* Bloque de texto con acento a la izquierda */}
             <div className="w-2/3">
@@ -75,7 +78,7 @@ export default function FoundationsGrid({ items, className = "" }: Props) {
             {/* Logo a la derecha (oculto en móvil) */}
             {it.image && (
               <motion.div
-                className="w-1/3 hidden lg:block"
+                className="w-1/3"
                 variants={{
                   hidden: { opacity: 0, scale: 0.96 },
                   show: {
@@ -93,7 +96,7 @@ export default function FoundationsGrid({ items, className = "" }: Props) {
                 />
               </motion.div>
             )}
-          </motion.article>
+          </motion.a>
         ))}
       </motion.div>
     </section>
