@@ -6,6 +6,7 @@ import Button, { ButtonVariant } from "../shared/Button";
 import { navigate } from "gatsby";
 import OpeningLeaves from "../shared/OpeningLeaves";
 import { BUTTON_TYPES, COLORS } from "../../constants";
+import RamasHojasAnimadas from "../shared/RamasHojasAnimadas";
 
 type MediaType = "image" | "video" | "iframe";
 
@@ -24,6 +25,7 @@ type SectionProps = {
   bgColor?: string;
   mediaAlign?: "center" | "border" | "border-left";
   leaves?: boolean;
+  tree?: boolean;
   titleClassname?: string;
   containerClassname?: string;
   mediaClassname?: string;
@@ -52,6 +54,7 @@ export default function ContentSection({
   bgColor = "light",
   mediaAlign = "center",
   leaves = false,
+  tree = false,
   titleClassname = "text-tertiary",
   containerClassname = "",
   mediaClassname = "",
@@ -75,7 +78,8 @@ export default function ContentSection({
           className={classnames(
             "flex flex-col md:flex-row items-center gap-8 md:gap-16 lg:gap-24",
             { "md:flex-row-reverse": reverse },
-            { "flex-col-reverse md:flex-row": reverseMobile }
+            { "flex-col-reverse md:flex-row": reverseMobile },
+            { "pb-[280px] pt-[50px] md:py-0": tree }
           )}
           variants={containerV}
           initial="hidden"
@@ -170,7 +174,8 @@ export default function ContentSection({
             className={classnames("w-full", {
               "md:w-1/2": mediaType === "video" || mediaAlign === "center",
               "md:w-1/3": mediaType !== "video" && mediaAlign !== "center",
-              "flex justify-center": mediaAlign === "center",
+              "flex justify-center": mediaAlign === "center" && !tree,
+              "": tree,
             })}
           >
             {!leaves && mediaType === "image" && mediaSrc && (
@@ -226,6 +231,15 @@ export default function ContentSection({
                   delay={0.1}
                   open
                 />
+              </div>
+            )}
+
+            {tree && (
+              <div
+                className="w-[400px] md:w-[600px] absolute right-0 bottom-0"
+                style={{ aspectRatio: "1 / 1" }}
+              >
+                <RamasHojasAnimadas />
               </div>
             )}
           </div>

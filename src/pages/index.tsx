@@ -7,27 +7,35 @@ import ImpactoODS from "../components/sections/ImpactoODS";
 import ImpactoResumen from "../components/sections/ImpactoResumen";
 import DonorsAndAllies from "../components/sections/DonorsAndAllies";
 import SuccessStories from "../SuccessStories";
+import RamasHojasAnimadas from "../components/shared/RamasHojasAnimadas";
 
 const logos = [
   "/alianzas/logo1.png",
-  "/alianzas/logo1.png",
-  "/alianzas/logo1.png",
-  "/alianzas/logo1.png",
-  "/alianzas/logo1.png",
-  "/alianzas/logo1.png",
-  "/alianzas/logo1.png",
-  "/alianzas/logo1.png",
-  "/alianzas/logo1.png",
-  "/alianzas/logo1.png",
-  "/alianzas/logo1.png",
-  "/alianzas/logo1.png",
-  "/alianzas/logo1.png",
-  "/alianzas/logo1.png",
-  "/alianzas/logo1.png",
-  "/alianzas/logo1.png",
-  "/alianzas/logo1.png",
-  "/alianzas/logo1.png",
-  "/alianzas/logo1.png",
+  "/alianzas/logo2.png",
+  "/alianzas/logo3.png",
+  "/alianzas/logo4.png",
+  "/alianzas/logo5.png",
+  "/alianzas/logo6.png",
+  "/alianzas/logo7.png",
+  "/alianzas/logo8.png",
+  "/alianzas/logo9.png",
+  "/alianzas/logo10.png",
+  "/alianzas/logo11.png",
+  "/alianzas/logo12.png",
+  "/alianzas/logo13.png",
+  "/alianzas/logo14.png",
+  "/alianzas/logo15.png",
+  "/alianzas/logo16.png",
+  "/alianzas/logo17.png",
+  "/alianzas/logo18.png",
+  "/alianzas/logo19.png",
+  "/alianzas/logo20.png",
+  "/alianzas/logo21.png",
+  "/alianzas/logo22.png",
+  "/alianzas/logo23.png",
+  "/alianzas/logo24.png",
+  "/alianzas/logo25.png",
+  "/alianzas/logo26.png",
 ];
 
 const stories = [
@@ -72,6 +80,7 @@ const IndexPage: React.FC<PageProps> = () => {
         `}
         button1Text="Conoce más"
         button1Href="/quienes_somos"
+        tree
       />
       <ContentSection
         bgColor={COLORS.primary}

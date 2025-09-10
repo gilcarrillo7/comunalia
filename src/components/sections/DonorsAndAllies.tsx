@@ -47,14 +47,14 @@ export default function DonorsAndAllies({
 
         {/* Grid de logos */}
         <div
-          className="flex flex-wrap justify-center items-center gap-1 md:gap-4 w-full mx-auto"
+          className="flex flex-wrap justify-center items-center gap-2 md:gap-6 w-full mx-auto"
           aria-label="Lista de donantes y aliados"
         >
           {images.map((img, i) => (
             <motion.div
               key={`${img}-${i}`}
               className="
-                basis-[32%]
+                basis-[30%]
                 sm:basis-[25%]
                 md:basis-[20%]
                 lg:basis-[15%]
@@ -72,12 +72,12 @@ export default function DonorsAndAllies({
               whileHover={reduce ? {} : { scale: 1.03 }}
               whileTap={reduce ? {} : { scale: 0.97 }}
             >
-              <div className="w-full">
+              <div className="w-3/4">
                 <img
                   src={img}
                   alt="Logo"
                   loading="lazy"
-                  className="block w-full h-auto object-contain transition-opacity duration-300 hover:opacity-90"
+                  className="block w-auto h-auto transition-opacity duration-300 hover:opacity-90"
                 />
               </div>
             </motion.div>
