@@ -47,29 +47,29 @@ const QuienesSomosPage: React.FC<PageProps> = () => {
         title="Consejo"
         members={[
           {
-            image: "/consejo1.jpg",
+            image: "/team/1.png",
             name: "Carlos García Miranda",
             role: "Presidente del Consejo",
           },
           {
-            image: "/consejo2.jpg",
+            image: "/team/2.png",
             name: "David Pérez Rulfo",
             role: "Tesorero",
           },
           {
-            image: "/consejo3.jpg",
+            image: "/team/3.png",
             name: "Alberto Cárdenas Aldrete",
             role: "Secretario",
           },
           {
-            image: "/consejo4.jpg",
+            image: "/team/4.png",
             name: "Alejandra Rivera Casillas",
             role: "Vocal",
           },
-          { image: "/consejo5.jpg", name: "Susana Móran", role: "Vocal" },
-          { image: "/consejo6.jpg", name: "Luis Ruiz Saucedo", role: "Vocal" },
+          { image: "/team/5.png", name: "Susana Móran", role: "Vocal" },
+          { image: "/team/6.png", name: "Luis Ruiz Saucedo", role: "Vocal" },
           {
-            image: "/consejo7.jpg",
+            image: "/team/7.png",
             name: "Erik Bruce Friend Drake",
             role: "Vocal",
           },
@@ -78,10 +78,10 @@ const QuienesSomosPage: React.FC<PageProps> = () => {
       <Team
         title="Equipo"
         members={[
-          { image: "/team/daniella.jpg", name: "Daniella Undreiner Ponce" },
-          { image: "/team/minerva.jpg", name: "Minerva Zamora Domínguez" },
-          { image: "/team/anakarenn.jpg", name: "Anakaren Perales García" },
-          { image: "/team/raquel.jpg", name: "Raquel Maldonado" },
+          { image: "/team/8.png", name: "Daniella Undreiner Ponce" },
+          { image: "/team/9.png", name: "Minerva Zamora Domínguez" },
+          { image: "/team/10.png", name: "Anakaren Perales García" },
+          { image: "/team/11.png", name: "Raquel Maldonado" },
         ]}
       />
     </Layout>

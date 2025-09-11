@@ -22,12 +22,13 @@ export default function Team({ title, members, className = "" }: TeamProps) {
     <section
       className={`relative overflow-hidden w-full bg-secondary ${className}`}
     >
+      <img src={Textura} className="absolute bottom-0 right-0 w-full z-0" alt="" />
       <div className="container py-12 md:py-16 flex flex-col md:flex-row items-center gap-8">
-        <h2 className="text-center md:text-left text-white text-4xl md:text-5xl font-medium tracking-tight mb-8 md:mb-12">
+        <h2 className="z-10 text-center md:text-left text-white text-4xl md:text-5xl font-medium tracking-tight mb-8 md:mb-12">
           {title}
         </h2>
 
-        <div className="flex-grow grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-10 md:gap-y-12">
+        <div className="z-10 flex-grow grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-10 md:gap-y-12">
           {members.map((m, idx) => {
             const isLast = idx === members.length - 1;
             const mobileCenterLast =
@@ -79,7 +80,6 @@ export default function Team({ title, members, className = "" }: TeamProps) {
           })}
         </div>
       </div>
-      <img src={Textura} className="absolute bottom-0 right-0 w-full" alt="" />
     </section>
   );
 }

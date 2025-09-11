@@ -45,7 +45,7 @@ const stories = [
     description:
       "Ante la crisis provocada por el Covid-19, Comunalia activó en 2020 un modelo de intervención ágil...",
     buttonText: "Leer",
-    slug: "/historias/",
+    slug: "/historias/historia1",
   },
   {
     image: "images/img2.png",
@@ -53,7 +53,7 @@ const stories = [
     description:
       "Uno de los mayores activos de las fundaciones comunitarias es su conocimiento profundo del territorio...",
     buttonText: "Leer",
-    slug: "/historias/",
+    slug: "/historias/historia2",
   },
   {
     image: "images/img3.jpg",
@@ -61,7 +61,7 @@ const stories = [
     description:
       "Impulsar la filantropía comunitaria es clave para crecer la participación e involucrar ciudadanos...",
     buttonText: "Leer",
-    slug: "/historias/",
+    slug: "/historias/historia3",
   },
 ];
 

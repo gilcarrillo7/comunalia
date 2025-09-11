@@ -12,6 +12,7 @@ type StoryDetailProps = {
   imagen: string;
   /** HTML del contenido (párrafos, enlaces, etc.) */
   content: string;
+  next: string;
   /** Clase opcional para ajustes locales */
   className?: string;
 };
@@ -22,6 +23,7 @@ export default function StoryDetail({
   imagen,
   content,
   className = "",
+  next,
 }: StoryDetailProps) {
   return (
     <section className={`w-full min-h-screen bg-white ${className}`}>
@@ -31,7 +33,7 @@ export default function StoryDetail({
         <div className="h-24 md:h-40 bg-primary" />
         <div className="flex h-40 md:h-96">
           <div className="w-1/2 bg-secondary flex items-center justify-center">
-            <h1 className="text-xl md:text-2xl lg:text-4xl xl:text-5xl font-normal tracking-tight text-white">
+            <h1 className="p-4 p-16 text-xl md:text-2xl lg:text-4xl xl:text-5xl font-normal tracking-tight text-white">
               {titulo}
             </h1>
           </div>
@@ -43,7 +45,10 @@ export default function StoryDetail({
               loading="eager"
             />
             <div className="">
-              <img src={VectorFooter} className="h-12 md:h-40 z-10 absolute bottom-0 right-0" />
+              <img
+                src={VectorFooter}
+                className="h-12 md:h-40 z-10 absolute bottom-0 right-0"
+              />
             </div>
           </div>
         </div>
@@ -66,7 +71,7 @@ export default function StoryDetail({
         {/* CTAs inferiores */}
         <div className="flex flex-col gap-6 pb-10">
           <a
-            href={`/${slug}/siguiente`}
+            href={next}
             className="text-xl md:text-3xl text-primary font-semibold hover:opacity-80 transition-opacity"
           >
             Siguiente historia

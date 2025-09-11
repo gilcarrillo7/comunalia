@@ -278,7 +278,7 @@ export default function SuccessStories({
           >
             <Button
               variant="outline-primary"
-              onClick={() => navigate("/historias")}
+              onClick={() => {}}
             >
               {ctaText}
             </Button>
