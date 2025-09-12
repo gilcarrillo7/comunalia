@@ -92,16 +92,28 @@ export const SocialIcons = ({
       "grid grid-cols-2 sm:grid-cols-4 gap-6": sameSize,
     })}
   >
-    <a href="" target="_blank" rel="noopener noreferrer">
+    <a href="https://x.com/Comunalia" target="_blank" rel="noopener noreferrer">
       <TwitterX sameSize={sameSize} />
     </a>
-    <a href="" target="_blank" rel="noopener noreferrer">
+    <a
+      href="https://www.facebook.com/Comunalia/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <Facebook sameSize={sameSize} />
     </a>
-    <a href="" target="_blank" rel="noopener noreferrer">
+    <a
+      href="https://www.instagram.com/comunalia/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <Instagram sameSize={sameSize} />
     </a>
-    <a href="" target="_blank" rel="noopener noreferrer">
+    <a
+      href="https://www.linkedin.com/company/comunalia/?originalSubdomain=mx"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <Linkedin sameSize={sameSize} />
     </a>
   </div>

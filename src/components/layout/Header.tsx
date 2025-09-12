@@ -32,7 +32,7 @@ const navItems = [
     url: "https://comunalia.org.mx/biblioteca-virtual/",
   },
   { link: "Contacto", url: "/contacto" },
-  { link: "English", url: "/en" },
+  // { link: "English", url: "/en" },
 ];
 
 export default function Header({ darkMode }: { darkMode: boolean }) {
