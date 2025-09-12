@@ -202,7 +202,7 @@ export default function ContentSection({
               />
             )}
             {mediaSrcMob !== "" && (
-              <img src={mediaSrcMob} className="w-full md:hidden" />
+              <img src={mediaSrcMob} className="md:hidden -ml-4 w-[100vw] max-w-[100vw]" />
             )}
 
             {!leaves && mediaType === "video" && mediaSrc && (

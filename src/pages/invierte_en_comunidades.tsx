@@ -61,6 +61,7 @@ const IndexPage: React.FC<PageProps> = () => {
         mediaType="image"
         mediaSrc="/images/invierte3.png"
         mediaSrcMob="/images/invierte3Mob.jpg"
+        containerClassname="!pb-0 md:!pb-8"
         reverse
       />
       <ContentSection
