@@ -3,6 +3,7 @@ import { SocialIcons } from "./SocialIcons";
 import Button from "../shared/Button";
 import FooterImg from "../../images/footer1.png";
 import VectorFooter from "../../images/vectorFooter.png";
+import { Link, navigate } from "gatsby";
 
 type Props = {
   year?: number;
@@ -15,8 +16,6 @@ type Props = {
 
 export default function Footer({
   year = new Date().getFullYear(),
-  newsHref = "/noticias",
-  privacyHref = "/aviso-de-privacidad",
   siteEmail = "contacto@comunalia.org.mx",
   phone = "2719 6670",
   devHref = "https://trazovivo.com",
@@ -47,7 +46,11 @@ export default function Footer({
             </div>
             <div className="flex flex-col gap-6 justify-center items-center">
               {/* Botón Noticias */}
-              <Button>Noticias</Button>
+              <Button
+                onClick={() => navigate("https://comunalia.org.mx/noticias/")}
+              >
+                Noticias
+              </Button>
               {/* Redes */}
               <SocialIcons />
             </div>
@@ -96,12 +99,12 @@ export default function Footer({
         <div className="flex flex-col sm:flex-row justify-center mx-auto px-4">
           <span className="font-medium">Comunalia {year}</span>
           <span className="mx-2 hidden sm:block">·</span>
-          <a
-            href={privacyHref}
+          <Link
             className="underline underline-offset-2 hover:opacity-90"
+            to="/aviso_de_privacidad"
           >
             Consulta nuestro aviso de privacidad.
-          </a>
+          </Link>
         </div>
       </div>
     </footer>

@@ -88,7 +88,8 @@ const IndexPage: React.FC<PageProps> = () => {
         button1Variant="outline"
         mediaType="image"
         mediaSrc="/images/invierte2.png"
-        mediaAlign="border-left"
+        mediaAlign="border-bottom"
+        containerClassname="pb-0"
       />
     </Layout>
   );

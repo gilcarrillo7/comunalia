@@ -6,36 +6,20 @@ import StoryDetail from "../../components/layout/StoryDetail";
 const IndexPage: React.FC<PageProps> = () => {
   const content = `
     <p class="mb-4">
-      En Comunalia creemos que impulsar la filantropía comunitaria es clave en
-      crear la participación, involucrar a ciudadanos...
+      Ante la crisis provocada por el Covid-19, Comunalia activó en 2020 un modelo de intervención ágil y colaborativo: el Fondo Comunidades Activas. La iniciativa reunió a donantes nacionales e internacionales —Fundación Interamericana, Fundación Mott y Fundación Coca-Cola— junto con 16 fundaciones comunitarias mexicanas, para impulsar dos fases de proyectos de desarrollo local entre 2020 y 2022.
     </p>
     <p class="mb-4">
-      Por eso, desde 2022 y en alianza con Philanthropy Together, impulsamos la
-      creación de Círculos de Dar, una metodología que permite a grupos de
-      personas reunirse, conocer causas cercanas a la comunidad y decidir en
-      conjunto a qué proyectos destinar sus donativos.
+      Esta coinversión no solo potenció el alcance de los proyectos, sino que fortaleció redes comunitarias y contribuyó a la reactivación de la vida económica y social en los territorios.
     </p>
     <p class="mb-4">
-      Gracias a esta iniciativa, nueve fundaciones comunitarias han iniciado sus
-      propios grupos de Círculos de Dar, movilizando recursos locales,
-      involucrando nuevos filántropos, impulsando vínculos con donantes locales y
-      generando nuevas alianzas.
+      Comunalia diseñó y coordinó el fondo, convocando a los donantes, deﬁniendo lineamientos en conjunto con las fundaciones, y acompañando el proceso con asesoría técnica, espacios de formación entre pares y una estrategia de monitoreo, evaluación y sistematización. Este modelo muestra la capacidad de la Alianza para canalizar recursos nacionales e internacionales de manera efectiva hacia soluciones locales, con transparencia, rendición de cuentas y visión de largo plazo.
     </p>
     <p class="mb-4">
-      Comunalia continúa impulsando este modelo. En 2024 acompañamos de cerca el
-      proceso de cuatro fundaciones en la implementación de sus programas:
-      creando reuniones periódicas, realizando ejercicios participativos,
-      fortaleciendo el vínculo con donantes y adaptando la metodología al
-      contexto y trayectoria institucional de cada fundación.
-    </p>
-    <p class="mb-12 md:mb-16">
-      Hoy, Círculos de Dar son una herramienta viva que las fundaciones
-      comunitarias mexicanas aplicamos y seguiremos aplicando para crear, hacer
-      y vivir juntos, construyendo un cultura de donación colectiva en México.
+      El Fondo Comunidades Activas es un ejemplo de lo que Comunalia puede articular con nuevos aliados. 
     </p>
     <div class="w-full flex flex-col md:flex-row gap-12 md:gap-6 justify-between">
-      <img src="/historias/img7.jpg" alt="" class="max-w-full md:max-w-[45%]" />
-      <img src="/historias/img8.jpg" alt="" class="max-w-full md:max-w-[45%]" />
+      <img src="/historias/img12.jpg" alt="" class="max-w-full md:max-w-[45%]" />
+      <img src="/historias/img13.jpg" alt="" class="max-w-full md:max-w-[45%]" />
     </div>
   `;
 
@@ -43,8 +27,8 @@ const IndexPage: React.FC<PageProps> = () => {
     <Layout darkMode>
       <StoryDetail
         slug="circulos-de-dar"
-        titulo="Círculos de Dar"
-        imagen="/historias/img6.jpg"
+        titulo="Fondo Comunidades Activas:"
+        imagen="/historias/img11.jpg"
         content={content}
         next="/historias/historia2"
       />
@@ -54,4 +38,4 @@ const IndexPage: React.FC<PageProps> = () => {
 
 export default IndexPage;
 
-export const Head: HeadFC = () => <title>Servicios</title>;
+export const Head: HeadFC = () => <title>Historias de éxito</title>;

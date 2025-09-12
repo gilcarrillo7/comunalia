@@ -58,7 +58,7 @@ const foundations: FoundationItem[] = [
     title: "Fundación Comunidad • Siembra tu capacidad",
     description:
       "Impulsa iniciativas locales con participación ciudadana y enfoque de fortalecimiento comunitario. Promueve proyectos que generan capacidades y bienestar sostenible.",
-    href: "https://www.comunidad.org.mx/",
+    href: "www.comunidad.org.mx/",
   },
   {
     image: "/fundaciones/fundacion2.png",
@@ -66,7 +66,7 @@ const foundations: FoundationItem[] = [
     title: "Comunidar",
     description:
       "Articula donantes y organizaciones para detonar proyectos estratégicos con impacto medible en Nuevo León y la región. Transparencia y alianzas como eje de acción.",
-    href: "https://www.comunidar.org/",
+    href: "www.comunidar.org/",
   },
   {
     image: "/fundaciones/fundacion3.png",
@@ -74,7 +74,7 @@ const foundations: FoundationItem[] = [
     title: "FEYAC",
     description:
       "Fundación del Empresariado Yucateco A.C. que canaliza recursos y conocimiento del sector empresarial hacia iniciativas sociales de alto impacto en Yucatán.",
-    href: "https://feyac.org/",
+    href: "www.feyac.org.mx/",
   },
   {
     image: "/fundaciones/fundacion4.png",
@@ -82,7 +82,7 @@ const foundations: FoundationItem[] = [
     title: "Merced Coahuila",
     description:
       "Fomenta la inversión social, la cultura de la filantropía y el fortalecimiento institucional de OSC para mejorar la calidad de vida en Coahuila.",
-    href: "https://mercedcoahuila.org/",
+    href: "www.mercedcoahuila.org/",
   },
   {
     image: "/fundaciones/fundacion5.png",
@@ -90,7 +90,7 @@ const foundations: FoundationItem[] = [
     title: "Corporativa de Fundaciones",
     description:
       "Plataforma que fortalece a organizaciones y donantes con modelos de inversión social, evaluación de impacto y desarrollo institucional en Jalisco.",
-    href: "https://corporativadefundaciones.org/",
+    href: "www.cf.org.mx/",
   },
   {
     image: "/fundaciones/fundacion6.png",
@@ -98,7 +98,7 @@ const foundations: FoundationItem[] = [
     title: "Fundación Cozumel",
     description:
       "Promueve el desarrollo integral de Cozumel a través de programas comunitarios, ambientales y educativos, impulsando la participación ciudadana.",
-    href: "https://fundacioncozumel.org/",
+    href: "www.fundacioncozumel.org/",
   },
   {
     image: "/fundaciones/fundacion7.png",
@@ -106,7 +106,7 @@ const foundations: FoundationItem[] = [
     title: "Fundación Merced Querétaro",
     description:
       "Moviliza recursos y alianzas para fortalecer a las OSC y atender causas prioritarias en Querétaro con enfoque de resultados y transparencia.",
-    href: "https://mercedqueretaro.org.mx/",
+    href: "www.mercedqueretaro.org/",
   },
   {
     image: "/fundaciones/fundacion8.png",
@@ -114,7 +114,7 @@ const foundations: FoundationItem[] = [
     title: "FECHAC",
     description:
       "Fundación del Empresariado Chihuahuense A.C. que invierte en educación, salud y desarrollo social mediante alianzas público-privadas y participación empresarial.",
-    href: "https://fechac.org.mx/",
+    href: "www.fechac.org.mx/",
   },
   {
     image: "/fundaciones/fundacion9.png",
@@ -122,7 +122,7 @@ const foundations: FoundationItem[] = [
     title: "Fundación Comunitaria Malinalco",
     description:
       "Acompaña procesos locales de organización y cuidado del territorio. Impulsa proyectos culturales, ambientales y de economía solidaria en Malinalco.",
-    href: "https://fundacioncomunitariamalinalco.org/",
+    href: "www.fundacioncomunitariamalinalco.org/",
   },
   {
     image: "/fundaciones/fundacion10.png",
@@ -130,7 +130,7 @@ const foundations: FoundationItem[] = [
     title: "Fundación Punta Mita",
     description:
       "Promueve la participación comunitaria y la conservación ambiental en Bahía de Banderas, con programas educativos y de desarrollo económico local.",
-    href: "https://fundacionpuntamita.org/",
+    href: "www.fundacionpuntademita.org/",
   },
   {
     image: "/fundaciones/fundacion11.png",
@@ -138,7 +138,7 @@ const foundations: FoundationItem[] = [
     title: "Amigos de San Cristóbal A.C.",
     description:
       "Canaliza recursos a proyectos de educación, salud y desarrollo en comunidades de Los Altos de Chiapas, fortaleciendo a organizaciones locales.",
-    href: "https://amigosdesancristobal.org/",
+    href: "www.amigosdesc.org/",
   },
   {
     image: "/fundaciones/fundacion12.png",
@@ -146,7 +146,7 @@ const foundations: FoundationItem[] = [
     title: "FESAC",
     description:
       "Fundación del Empresariado Sonorense A.C. que invierte en capital social y proyectos de desarrollo para mejorar la calidad de vida en Sonora.",
-    href: "https://fesac.org/",
+    href: "www.fesac.org/",
   },
   {
     image: "/fundaciones/fundacion13.png",
@@ -154,7 +154,7 @@ const foundations: FoundationItem[] = [
     title: "Fundación Internacional de la Comunidad A.C.",
     description:
       "Fortalece a OSC y liderazgos comunitarios en Baja California, movilizando recursos locales e internacionales para el bien común.",
-    href: "https://ficbc.org/",
+    href: "www.ficbaja.org/",
   },
   {
     image: "/fundaciones/fundacion14.png",
@@ -162,7 +162,7 @@ const foundations: FoundationItem[] = [
     title: "Fundación Comunitaria Oaxaca",
     description:
       "Impulsa la filantropía comunitaria en Oaxaca con programas de becas, desarrollo económico y reconstrucción del tejido social.",
-    href: "https://fundacion-oaxaca.org/",
+    href: "www.fundacion-oaxaca.org/",
   },
   {
     image: "/fundaciones/fundacion15.png",
@@ -170,7 +170,7 @@ const foundations: FoundationItem[] = [
     title: "Fundación Comunitaria Puebla I.A.P.",
     description:
       "Promueve la participación social y el fortalecimiento de OSC para atender problemáticas prioritarias en el estado de Puebla.",
-    href: "https://fundacionpuebla.org/",
+    href: "www.fcpuebla.org/",
   },
   {
     image: "/fundaciones/fundacion16.png",
@@ -178,7 +178,7 @@ const foundations: FoundationItem[] = [
     title: "Fondo de Inversión Social Potosino",
     description:
       "Conecta donantes con proyectos sociales en San Luis Potosí, priorizando el desarrollo comunitario y la rendición de cuentas.",
-    href: "https://fisp.org.mx/",
+    href: "www.fondopotosino.org/",
   },
 ];
 

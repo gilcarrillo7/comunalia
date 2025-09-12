@@ -52,7 +52,7 @@ export default function SuccessStories({
       <div className="container">
         {/* Título */}
         <motion.h2
-          className="text-4xl md:text-6xl font-light tracking-tight text-primary mb-8 md:mb-12"
+          className="text-4xl md:text-6xl font-light tracking-tight text-primary mb-8 md:mb-12 lg:mb-24"
           initial={{ opacity: 0, y: reduce ? 0 : 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, ease: "easeOut" }}

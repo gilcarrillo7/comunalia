@@ -76,9 +76,8 @@ export default function ImpactoODS() {
           el conocimiento y capacidades de las fundaciones comunitarias.
         </motion.p>
 
-        {/* DESKTOP: 4 columnas (2 imágenes por columna) con stagger */}
         <motion.div
-          className="hidden md:grid grid-cols-4 gap-8 mt-12"
+          className="hidden md:grid grid-cols-4 gap-8 mt-12 md:mt-32"
           variants={gridV}
           initial="hidden"
           whileInView="show"

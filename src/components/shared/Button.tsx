@@ -11,6 +11,8 @@ export type ButtonVariant =
 type ButtonProps = {
   children: React.ReactNode;
   onClick?: () => void;
+  onMouseLeave?: () => void;
+  onMouseEnter?: () => void;
   className?: string;
   containerClassName?: string;
   type?: "button" | "submit" | "reset";
@@ -22,6 +24,8 @@ type ButtonProps = {
 const Button = ({
   children,
   onClick,
+  onMouseEnter,
+  onMouseLeave,
   className = "",
   containerClassName = "",
   type = "button",
@@ -55,6 +59,8 @@ const Button = ({
           "rounded-full": !squaered,
         })}
         disabled={disabled}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
       >
         {children}
       </button>

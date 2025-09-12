@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import classnames from "classnames";
 import ReactPlayer from "react-player";
 import { motion } from "framer-motion";
@@ -23,7 +23,7 @@ type SectionProps = {
   reverse?: boolean;
   reverseMobile?: boolean;
   bgColor?: string;
-  mediaAlign?: "center" | "border" | "border-left";
+  mediaAlign?: "center" | "border" | "border-left" | "border-bottom";
   leaves?: boolean;
   tree?: boolean;
   titleClassname?: string;
@@ -59,6 +59,8 @@ export default function ContentSection({
   containerClassname = "",
   mediaClassname = "",
 }: SectionProps) {
+  const [active, setActive] = useState(false);
+
   const handleButtonClick = (buttonLink: string) => {
     if (!buttonLink) return;
     if (buttonLink.startsWith("http")) {
@@ -79,7 +81,7 @@ export default function ContentSection({
             "flex flex-col md:flex-row items-center gap-8 md:gap-16 lg:gap-24",
             { "md:flex-row-reverse": reverse },
             { "flex-col-reverse md:flex-row": reverseMobile },
-            { "pb-[280px] pt-[50px] md:py-0": tree }
+            { "pb-[280px] pt-[50px] md:py-0": tree },
           )}
           variants={containerV}
           initial="hidden"
@@ -141,6 +143,8 @@ export default function ContentSection({
                   onClick={() => handleButtonClick(button1Href)}
                   variant={button1Variant ?? BUTTON_TYPES.get(bgColor)}
                   className="mt-4"
+                  onMouseEnter={() => setActive(true)}
+                  onMouseLeave={() => setActive(false)}
                 >
                   {button1Text}
                 </Button>
@@ -188,6 +192,8 @@ export default function ContentSection({
                     mediaAlign === "border",
                   "ml-auto w-3/5 md:w-auto md:max-w-[30%] md:absolute h-auto md:max-h-screen right-0 md:top-1/2 md:-translate-y-1/2 -mr-4":
                     mediaAlign === "border-left",
+                  "ml-auto w-3/5 md:w-auto md:max-w-[30%] md:absolute h-auto md:max-h-screen right-0 md:bottom-0 -mr-4":
+                    mediaAlign === "border-bottom",
                   "relative w-auto h-auto": mediaAlign === "center",
                 })}
               />

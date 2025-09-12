@@ -47,7 +47,7 @@ export default function DonorsAndAllies({
 
         {/* Grid de logos */}
         <div
-          className="flex flex-wrap justify-center items-center gap-2 md:gap-6 w-full mx-auto"
+          className="flex flex-wrap justify-around items-center gap-2 md:gap-6 w-full mx-auto"
           aria-label="Lista de donantes y aliados"
         >
           {images.map((img, i) => (
