@@ -60,6 +60,7 @@ const IndexPage: React.FC<PageProps> = () => {
         mediaAlign="border"
         mediaType="image"
         mediaSrc="/images/invierte3.png"
+        mediaSrcMob="/images/invierte3Mob.jpg"
         reverse
       />
       <ContentSection

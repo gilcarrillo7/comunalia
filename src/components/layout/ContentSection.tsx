@@ -19,6 +19,7 @@ type SectionProps = {
   button2Text?: string;
   button2Href?: string;
   mediaSrc?: string;
+  mediaSrcMob?: string;
   mediaType?: MediaType;
   reverse?: boolean;
   reverseMobile?: boolean;
@@ -48,6 +49,7 @@ export default function ContentSection({
   button2Text,
   button2Href,
   mediaSrc,
+  mediaSrcMob = "",
   mediaType = "image",
   reverse = false,
   reverseMobile = false,
@@ -81,7 +83,7 @@ export default function ContentSection({
             "flex flex-col md:flex-row items-center gap-8 md:gap-16 lg:gap-24",
             { "md:flex-row-reverse": reverse },
             { "flex-col-reverse md:flex-row": reverseMobile },
-            { "pb-[280px] pt-[50px] md:py-0": tree },
+            { "pb-[280px] pt-[50px] md:py-0": tree }
           )}
           variants={containerV}
           initial="hidden"
@@ -195,8 +197,12 @@ export default function ContentSection({
                   "ml-auto w-3/5 md:w-auto md:max-w-[30%] md:absolute h-auto md:max-h-screen right-0 md:bottom-0 -mr-4":
                     mediaAlign === "border-bottom",
                   "relative w-auto h-auto": mediaAlign === "center",
+                  "hidden md:block": mediaSrcMob !== "",
                 })}
               />
+            )}
+            {mediaSrcMob !== "" && (
+              <img src={mediaSrcMob} className="w-full md:hidden" />
             )}
 
             {!leaves && mediaType === "video" && mediaSrc && (
