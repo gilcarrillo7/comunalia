@@ -26,7 +26,7 @@ const IndexPage: React.FC<PageProps> = () => {
         </div>
         `}
         button1Text="Quiero invertir"
-        button1Href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3PsJ5DE5s19SlhsV2tcX2jjz70YJbinfy9GXhEEEebjMtwha4KaIrwKjBiIFnyPQL6SrSsHHFc"
+        button1Href="mailto:anakaren.perales@comunalia.org.mx"
         mediaType="image"
         mediaSrc="/images/invierte1.png"
         mediaClassname="md:w-[80%]"
@@ -56,7 +56,7 @@ const IndexPage: React.FC<PageProps> = () => {
         </div>
         `}
         button1Text="Quiero invertir"
-        button1Href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3PsJ5DE5s19SlhsV2tcX2jjz70YJbinfy9GXhEEEebjMtwha4KaIrwKjBiIFnyPQL6SrSsHHFc"
+        button1Href="mailto:anakaren.perales@comunalia.org.mx"
         mediaAlign="border"
         mediaType="image"
         mediaSrc="/images/invierte3.png"
@@ -86,7 +86,7 @@ const IndexPage: React.FC<PageProps> = () => {
         </div>
         `}
         button1Text="Quiero invertir"
-        button1Href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3PsJ5DE5s19SlhsV2tcX2jjz70YJbinfy9GXhEEEebjMtwha4KaIrwKjBiIFnyPQL6SrSsHHFc"
+        button1Href="mailto:anakaren.perales@comunalia.org.mx"
         button1Variant="outline"
         mediaType="image"
         mediaSrc="/images/invierte2.png"

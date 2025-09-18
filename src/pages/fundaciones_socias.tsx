@@ -184,28 +184,29 @@ const foundations: FoundationItem[] = [
 
 const FundacionesSociasPage: React.FC<PageProps> = () => {
   return (
-    <Layout>
-      <Accordion
-        title="Conoce las características del modelo de Fundaciones Comunitarias de México"
-        items={accordionData}
-      />
+    <Layout darkMode>
 
       <ContentSection
         bgColor={COLORS.primary}
         content={`
           <p class="text-white">
-            Somos la única red con <span class="font-semibold">13 años  fortaleciendo fundaciones  comunitarias</span> para la transformación social en México. 
+            Somos la única red con <span class="font-semibold">14 años  fortaleciendo fundaciones  comunitarias</span> para la transformación social en México. 
           </p>
         `}
         mediaType="image"
         mediaSrc="/images/mapa.png"
         mediaAlign="center"
       />
+  
+      <Accordion
+        title="Conoce las características del modelo de Fundaciones Comunitarias de México"
+        items={accordionData}
+      />
 
       <div className="flex flex-col md:flex-row w-full">
         <div className="w-full md:w-1/2 flex bg-tertiary justify-center items-center px-12 py-16">
           <p className="text-primary font-light text-2xl md:text-2xl lg:text-4xl">
-            Conoce nuestras 16 fundaciones asociadas:
+            Conoce nuestras 17 fundaciones asociadas:
           </p>
         </div>
         <div className="w-full md:w-1/2 flex">

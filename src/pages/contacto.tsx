@@ -76,7 +76,7 @@ const IndexPage: React.FC<PageProps> = () => {
         <img
           src={Imagen}
           alt="Contacto"
-          className="hidden md:block absolute left-0 bottom-0 z-0"
+          className="hidden md:block absolute left-0 bottom-0 z-0 max-h-[70%]"
         />
         <div className="container z-10">
           <div className="max-w-3xl ml-auto text-lg md:text-xl lg:text-2xl md:mr-24">

@@ -104,7 +104,7 @@ const IndexPage: React.FC<PageProps> = () => {
               Impulsa cambios sociales positivos en México apoyando la diversidad de territorios y causas locales. Conecta tu Responsabilidad Social Empresarial (RSE) con soluciones diseñadas desde las comunidades.
             </p>
             <p class="mt-6 text-white text-xl sm:text-2xl font-semibold">
-              Haz de Comunalia tu aliado estratégico en la transformación socia
+              Haz de Comunalia tu aliado estratégico en la transformación social.
             </p>
           </div>
         `}

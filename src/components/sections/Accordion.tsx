@@ -51,9 +51,9 @@ export default function Accordion({
                   aria-controls={contentId}
                   aria-expanded={isOpen}
                   onClick={() => toggle(idx)}
-                  className="w-full flex items-center justify-between gap-4 py-3 md:py-4 text-left"
+                  className="w-full flex items-center justify-between gap-4 py-3 md:py-4 text-left text-primary hover:text-secondary"
                 >
-                  <span className="text-base md:text-lg text-primary">
+                  <span className="text-base md:text-lg">
                     {it.title}
                   </span>
                   <ChevronDown

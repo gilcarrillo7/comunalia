@@ -27,7 +27,7 @@ const IndexPage: React.FC<PageProps> = () => {
         </div>
         `}
         button1Text="Contacto"
-        button1Href="/contacto"
+        button1Href="mailto:minerva.zamora@comunalia.org.mx"
         mediaType="image"
         mediaSrc="/images/servicios1.png"
         mediaClassname="md:!absolute md:right-0 md:bottom-0 md:w-[600px]"
@@ -49,7 +49,7 @@ const IndexPage: React.FC<PageProps> = () => {
         </div>
         `}
         button1Text="Contacto"
-        button1Href="/contacto"
+        button1Href="mailto:minerva.zamora@comunalia.org.mx"
         mediaAlign="border"
         mediaType="image"
         mediaSrc="/images/servicios2.png"
@@ -74,7 +74,7 @@ const IndexPage: React.FC<PageProps> = () => {
         </div>
         `}
         button1Text="Contacto"
-        button1Href="/contacto"
+        button1Href="mailto:minerva.zamora@comunalia.org.mx"
         mediaType="image"
         mediaSrc="/images/servicios3.png"
         mediaClassname="w-[60%]"

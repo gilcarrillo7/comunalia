@@ -41,7 +41,7 @@ const IndexPage: React.FC<PageProps> = () => {
         </div>
         `}
           button1Text="Quiero más información"
-          button1Href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3PsJ5DE5s19SlhsV2tcX2jjz70YJbinfy9GXhEEEebjMtwha4KaIrwKjBiIFnyPQL6SrSsHHFc"
+          button1Href="mailto:direccion@comunalia.org.mx"
           mediaType="image"
           mediaSrc="/images/fcsocia.png"
           mediaClassname="w-[80%] md:w-auto"
