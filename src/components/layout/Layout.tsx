@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
+import SEO from "./SEO";
 
 export default function Layout({
   children,
@@ -11,10 +12,13 @@ export default function Layout({
   hideFooter?: boolean;
 }) {
   return (
-    <div className="min-h-screen overflow-x-hidden">
-      <Header darkMode={darkMode} />
-      {children}
-      <Footer />
-    </div>
+    <>
+      <div className="min-h-screen overflow-x-hidden">
+        <Header darkMode={darkMode} />
+        {children}
+        <Footer />
+      </div>
+      <SEO />
+    </>
   );
 }

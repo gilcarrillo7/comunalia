@@ -65,7 +65,7 @@ export default function ContentSection({
 
   const handleButtonClick = (buttonLink: string) => {
     if (!buttonLink) return;
-    if (buttonLink.startsWith("http") || buttonLink.startsWith("mailto:")) {
+    if (buttonLink.startsWith("http")) {
       window.open(buttonLink);
     } else {
       navigate(buttonLink);
