@@ -15,7 +15,7 @@ const IndexPage: React.FC<PageProps> = () => {
       Comunalia acompaña a las fundaciones comunitarias en todas las etapas: brinda recursos económicos, ofrece asesoría técnica y retroalimentación individualizada, comparte metodologías a través de espacios de aprendizaje entre pares y apoya la difusión de los resultados.
     </p>
     <p class="mb-12 md:mb-16">
-      Consulta la sistematización 2021- 2024 y Reportes Vitales en la <a href="https://comunalia.org.mx/biblioteca-virtual/" target="_blank">Biblioteca Digital</a>.
+      Consulta la sistematización 2021- 2024 y Reportes Vitales en la <a href="https://blog.comunalia.org.mx/biblioteca-virtual/" target="_blank">Biblioteca Digital</a>.
     </p>
     <div class="w-full flex flex-col md:flex-row gap-12 md:gap-6 justify-between">
       <img src="/historias/img9.jpg" alt="" class="max-w-full md:max-w-[45%]" />

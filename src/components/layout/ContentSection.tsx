@@ -8,28 +8,33 @@ import OpeningLeaves from "../shared/OpeningLeaves";
 import { BUTTON_TYPES, COLORS } from "../../constants";
 import RamasHojasAnimadas from "../shared/RamasHojasAnimadas";
 
-type MediaType = "image" | "video" | "iframe";
+export type MediaType = "image" | "video" | "iframe";
+export type MediaAlignType =
+  | "center"
+  | "border"
+  | "border-left"
+  | "border-bottom";
 
 type SectionProps = {
-  title?: string;
-  content?: string;
-  button1Text?: string;
-  button1Href?: string;
-  button1Variant?: ButtonVariant;
-  button2Text?: string;
-  button2Href?: string;
-  mediaSrc?: string;
-  mediaSrcMob?: string;
-  mediaType?: MediaType;
+  title?: string | null;
+  content?: string | null;
+  button1Text?: string | null;
+  button1Href?: string | null;
+  button1Variant?: ButtonVariant | null;
+  button2Text?: string | null;
+  button2Href?: string | null;
+  mediaSrc?: string | null;
+  mediaSrcMob?: string | null;
+  mediaType?: MediaType | null;
   reverse?: boolean;
   reverseMobile?: boolean;
-  bgColor?: string;
-  mediaAlign?: "center" | "border" | "border-left" | "border-bottom";
+  bgColor?: string | null;
+  mediaAlign?: MediaAlignType | null;
   leaves?: boolean;
   tree?: boolean;
-  titleClassname?: string;
-  containerClassname?: string;
-  mediaClassname?: string;
+  titleClassname?: string | null;
+  containerClassname?: string | null;
+  mediaClassname?: string | null;
 };
 
 /** Animaciones suaves */
@@ -48,7 +53,7 @@ export default function ContentSection({
   button1Variant,
   button2Text,
   button2Href,
-  mediaSrc,
+  mediaSrc = "",
   mediaSrcMob = "",
   mediaType = "image",
   reverse = false,
@@ -61,7 +66,6 @@ export default function ContentSection({
   containerClassname = "",
   mediaClassname = "",
 }: SectionProps) {
-  const [active, setActive] = useState(false);
 
   const handleButtonClick = (buttonLink: string) => {
     if (!buttonLink) return;
@@ -75,7 +79,7 @@ export default function ContentSection({
   return (
     <section
       className={`${containerClassname} w-full min-h-screen flex items-center justify-center relative pt-24 pb-16 md:py-28`}
-      style={{ backgroundColor: bgColor }}
+      style={{ backgroundColor: bgColor ?? COLORS.light }}
     >
       <div className="container">
         <motion.div
@@ -143,10 +147,10 @@ export default function ContentSection({
               >
                 <Button
                   onClick={() => handleButtonClick(button1Href)}
-                  variant={button1Variant ?? BUTTON_TYPES.get(bgColor)}
+                  variant={
+                    button1Variant ?? BUTTON_TYPES.get(bgColor ?? COLORS.light)
+                  }
                   className="mt-4"
-                  onMouseEnter={() => setActive(true)}
-                  onMouseLeave={() => setActive(false)}
                 >
                   {button1Text}
                 </Button>
@@ -166,7 +170,7 @@ export default function ContentSection({
               >
                 <Button
                   onClick={() => handleButtonClick(button2Href)}
-                  variant={BUTTON_TYPES.get(bgColor)}
+                  variant={BUTTON_TYPES.get(bgColor ?? COLORS.light)}
                   className="mt-4"
                 >
                   {button2Text}
@@ -201,8 +205,11 @@ export default function ContentSection({
                 })}
               />
             )}
-            {mediaSrcMob !== "" && (
-              <img src={mediaSrcMob} className="md:hidden -ml-4 w-[100vw] max-w-[100vw]" />
+            {mediaSrcMob && mediaSrcMob !== "" && (
+              <img
+                src={mediaSrcMob}
+                className="md:hidden -ml-4 w-[100vw] max-w-[100vw]"
+              />
             )}
 
             {!leaves && mediaType === "video" && mediaSrc && (
@@ -222,7 +229,7 @@ export default function ContentSection({
               </motion.div>
             )}
 
-            {leaves && (
+            {leaves && mediaSrc && (
               <div className="flex flex-col items-center md:absolute md:right-0 md:bottom-0">
                 <img
                   src={mediaSrc}

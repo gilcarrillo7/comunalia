@@ -47,7 +47,9 @@ export default function Footer({
             <div className="flex flex-col gap-6 justify-center items-center">
               {/* Botón Noticias */}
               <Button
-                onClick={() => navigate("https://comunalia.org.mx/noticias/")}
+                onClick={() =>
+                  (window.location.href = "https://blog.comunalia.org.mx/noticias/")
+                }
               >
                 Noticias
               </Button>

@@ -4,22 +4,23 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, useInView, animate, useReducedMotion } from "framer-motion";
 import Button from "../shared/Button";
 import Textura from "../../images/textura1.svg";
+import { navigate } from "gatsby";
+import { NumberText } from "../../types/homeType";
 
-type Item = { value: string; lines: string[] };
-
-const DATA: Item[] = [
-  { value: "16", lines: ["estados", "impactados"] },
-  { value: "+1,100,000", lines: ["beneficiarios"] },
+const DATA: NumberText[] = [
+  { number: "16", text: "estados impactados" },
+  { number: "+1,100,000", text: "beneficiarios" },
   {
-    value: "+$700,000,000",
-    lines: ["otorgados a organizaciones", "de la sociedad civil"],
+    number: "+$700,000,000",
+    text: "otorgados a organizaciones de la sociedad civil",
   },
 ];
 
 type Props = {
-  items?: Item[];
-  ctaHref?: string;
-  ctaText?: string;
+  items?: NumberText[];
+  buttonUrl?: string;
+  buttonText?: string;
+  title?: string;
 };
 
 /* ======================= CountUp con Framer Motion ======================= */
@@ -84,9 +85,12 @@ function CountUpFM({
 }
 
 export default function ImpactoResumen({
+  title = "",
+  buttonText = "",
+  buttonUrl = "",
   items = DATA,
-  ctaText = "Consulta todos los resultados",
 }: Props) {
+  console.log("ImpactoResumen items:", items);
   const [idx, setIdx] = useState(0);
 
   const handlers = useSwipeable({
@@ -97,7 +101,7 @@ export default function ImpactoResumen({
 
   const labelActual = useMemo(() => {
     const it = items[idx];
-    return `${it.value} ${it.lines.join(" ")}`;
+    return `${it.number} ${it.text}`;
   }, [idx, items]);
 
   return (
@@ -118,7 +122,7 @@ export default function ImpactoResumen({
             viewport={{ once: true, amount: 0.35 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
           >
-            Conoce el impacto de las Fundaciones Comunitarias en México:
+            {title}
           </motion.h2>
 
           {/* DESKTOP */}
@@ -152,16 +156,14 @@ export default function ImpactoResumen({
                 )}
                 <div className="leading-none tracking-tight">
                   <CountUpFM
-                    value={it.value}
+                    value={it.number}
                     duration={1.0}
                     delay={i * 0.05}
                     className="text-5xl lg:text-6xl font-extrabold"
                   />
                 </div>
                 <div className="mt-2 text-lg md:text-xl leading-snug font-normal">
-                  {it.lines.map((ln, j) => (
-                    <div key={j}>{ln}</div>
-                  ))}
+                  {it.text}
                 </div>
               </motion.div>
             ))}
@@ -184,7 +186,7 @@ export default function ImpactoResumen({
                     className="shrink-0 w-full px-2"
                     role="group"
                     aria-roledescription="slide"
-                    aria-label={i === idx ? labelActual : `${it.value}`}
+                    aria-label={i === idx ? labelActual : `${it.number}`}
                   >
                     <motion.div
                       className="py-10 flex flex-col items-center text-center"
@@ -195,15 +197,13 @@ export default function ImpactoResumen({
                     >
                       <div className="leading-none tracking-tight">
                         <CountUpFM
-                          value={it.value}
+                          value={it.number}
                           duration={0.9}
                           className="text-4xl sm:text-6xl lg:text-7xl font-extrabold"
                         />
                       </div>
                       <div className="mt-3 text-xl sm:text-2xl font-semibold">
-                        {it.lines.map((ln, j) => (
-                          <div key={j}>{ln}</div>
-                        ))}
+                        {it.text}
                       </div>
                     </motion.div>
                   </div>
@@ -241,7 +241,9 @@ export default function ImpactoResumen({
             viewport={{ once: true, amount: 0.35 }}
             transition={{ duration: 0.45, ease: "easeOut", delay: 0.05 }}
           >
-            <Button variant="primary">{ctaText}</Button>
+            <Button variant="primary" onClick={() => navigate(buttonUrl)}>
+              {buttonText}
+            </Button>
           </motion.div>
         </div>
       </div>

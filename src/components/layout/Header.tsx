@@ -29,7 +29,7 @@ const navItems = [
   { link: "Donantes y aliados", url: "/#donantes_y_aliados" },
   {
     link: "Biblioteca virtual",
-    url: "https://comunalia.org.mx/biblioteca-virtual/",
+    url: "https://blog.comunalia.org.mx/biblioteca-virtual/",
   },
   { link: "Contacto", url: "/contacto" },
   // { link: "English", url: "/en" },
