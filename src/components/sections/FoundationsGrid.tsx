@@ -92,7 +92,6 @@ export default function FoundationsGrid({ items, className = "" }: Props) {
                   src={it.image}
                   alt={it.imageAlt || it.title}
                   className="w-36 xl:w-40 h-auto object-contain"
-                  loading="lazy"
                 />
               </motion.div>
             )}

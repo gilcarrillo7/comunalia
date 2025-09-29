@@ -57,7 +57,6 @@ export default function Team({ title, members, className = "" }: TeamProps) {
                     src={m.image}
                     alt={m.imageAlt ?? m.name}
                     className="w-full h-full object-cover"
-                    loading="lazy"
                     initial={{ scale: 1.02, opacity: 0 }}
                     whileInView={{
                       scale: 1,

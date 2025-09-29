@@ -1,23 +1,16 @@
 // components/stories/SuccessStories.tsx
-import React, { useMemo, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { navigate } from "gatsby";
-import Button from "./components/shared/Button";
+import Button from "../shared/Button";
 import { motion, useReducedMotion } from "framer-motion";
 import { useSwipeable } from "react-swipeable";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-
-type StoryItem = {
-  image: string;
-  title: string;
-  description: string;
-  buttonText: string;
-  slug: string; // ej: "/historias/fondo-comunidades-activas"
-};
+import { Historiasdeexito } from "../../types/homeType";
 
 type SuccessStoriesProps = {
-  title: string; // "Historias de éxito"
-  ctaText: string; // "Ver todas"
-  items: StoryItem[];
+  title: string;
+  ctaText: string;
+  items: Historiasdeexito[];
   className?: string;
 };
 
@@ -29,6 +22,7 @@ export default function SuccessStories({
 }: SuccessStoriesProps) {
   const reduce = useReducedMotion();
   const [idx, setIdx] = useState(0);
+  const [firsts, setFirsts] = useState(items.slice(0, 3));
 
   // asegura que idx esté en rango
   useEffect(() => {
@@ -74,7 +68,7 @@ export default function SuccessStories({
             >
               {items.map((it, i) => (
                 <div
-                  key={it.slug}
+                  key={it.databaseId ?? ""}
                   className="shrink-0 w-full px-8"
                   role="group"
                   aria-roledescription="slide"
@@ -89,15 +83,16 @@ export default function SuccessStories({
                     {/* Imagen */}
                     <button
                       type="button"
-                      onClick={() => navigate(it.slug)}
+                      onClick={() =>
+                        navigate(`/historias/?id=${it.databaseId ?? ""}`)
+                      }
                       className="text-left"
                       aria-label={it.title}
                     >
                       <div className="w-full aspect-[4/3] overflow-hidden bg-white/60 rounded-xl">
                         <motion.img
-                          src={it.image}
+                          src={it.thumb.node.sourceUrl}
                           alt={it.title}
-                          loading="lazy"
                           className="w-full h-full object-cover"
                           initial={{ scale: 1.02 }}
                           whileHover={reduce ? {} : { scale: 1.04 }}
@@ -126,13 +121,15 @@ export default function SuccessStories({
                         transition={{ duration: 0.45, ease: "easeOut" }}
                         viewport={{ once: true }}
                       >
-                        {it.description}
+                        {it.preview}
                       </motion.p>
 
                       {/* Link Leer */}
                       <motion.button
                         type="button"
-                        onClick={() => navigate(it.slug)}
+                        onClick={() =>
+                          navigate(`/historias/?id=${it.databaseId ?? ""}`)
+                        }
                         className="mt-5 text-primary font-normal inline-flex flex-col w-full items-center"
                         initial={{ opacity: 0, y: reduce ? 0 : 8 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -141,7 +138,7 @@ export default function SuccessStories({
                         whileHover={reduce ? {} : { scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                       >
-                        <span>{it.buttonText}</span>
+                        <span>{it.buttontext}</span>
                         <span className="mt-1 h-[2px] w-10 bg-primary/60 rounded" />
                       </motion.button>
                     </div>
@@ -172,9 +169,9 @@ export default function SuccessStories({
 
         {/* DESKTOP/TABLET: grid 3 columnas */}
         <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-          {items.map((it, idx) => (
+          {firsts.map((it, idx) => (
             <motion.article
-              key={it.slug}
+              key={it.databaseId ?? ""}
               className="flex flex-col"
               initial={{ opacity: 0, y: reduce ? 0 : 20, scale: 1 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -189,15 +186,16 @@ export default function SuccessStories({
               {/* Imagen */}
               <button
                 type="button"
-                onClick={() => navigate(it.slug)}
+                onClick={() =>
+                  navigate(`/historias/?id=${it.databaseId ?? ""}`)
+                }
                 className="text-left"
                 aria-label={it.title}
               >
                 <div className="w-full aspect-[4/3] overflow-hidden bg-white/60 rounded-xl">
                   <motion.img
-                    src={it.image}
+                    src={it.thumb.node.sourceUrl}
                     alt={it.title}
-                    loading="lazy"
                     className="w-full h-full object-cover"
                     initial={{ scale: 1.02 }}
                     whileHover={reduce ? {} : { scale: 1.06 }}
@@ -233,13 +231,15 @@ export default function SuccessStories({
                   }}
                   viewport={{ once: true }}
                 >
-                  {it.description}
+                  {it.preview}
                 </motion.p>
 
                 {/* Link Leer */}
                 <motion.button
                   type="button"
-                  onClick={() => navigate(it.slug)}
+                  onClick={() =>
+                    navigate(`/historias/?id=${it.databaseId ?? ""}`)
+                  }
                   className="mt-5 text-primary font-normal inline-flex flex-col w-full items-center"
                   initial={{ opacity: 0, y: reduce ? 0 : 8 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -252,7 +252,7 @@ export default function SuccessStories({
                   whileHover={reduce ? {} : { scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <span>{it.buttonText}</span>
+                  <span>{it.buttontext}</span>
                   <span className="mt-1 h-[2px] w-10 bg-primary/60 rounded" />
                 </motion.button>
               </div>
@@ -261,29 +261,31 @@ export default function SuccessStories({
         </div>
 
         {/* CTA inferior: oculto en móvil, visible en md+ */}
-        <motion.div
-          className="hidden md:flex justify-center mt-10 md:mt-12"
-          initial={{ opacity: 0, y: reduce ? 0 : 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 0.6,
-            ease: "easeOut",
-            delay: items.length * 0.05,
-          }}
-          viewport={{ once: true }}
-        >
+        {items.length > 3 && firsts.length <= 3 && (
           <motion.div
-            whileHover={reduce ? {} : { scale: 1.04 }}
-            whileTap={{ scale: 0.97 }}
+            className="hidden md:flex justify-center mt-10 md:mt-12"
+            initial={{ opacity: 0, y: reduce ? 0 : 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.6,
+              ease: "easeOut",
+              delay: items.length * 0.05,
+            }}
+            viewport={{ once: true }}
           >
-            <Button
-              variant="outline-primary"
-              onClick={() => {}}
+            <motion.div
+              whileHover={reduce ? {} : { scale: 1.04 }}
+              whileTap={{ scale: 0.97 }}
             >
-              {ctaText}
-            </Button>
+              <Button
+                variant="outline-primary"
+                onClick={() => setFirsts(items)}
+              >
+                {ctaText}
+              </Button>
+            </motion.div>
           </motion.div>
-        </motion.div>
+        )}
       </div>
     </motion.section>
   );

@@ -9,8 +9,7 @@ type DonorsAndAlliesProps = {
   images: string[]; // arreglo de logos
   ctaText: string; // texto del botón
   ctaHref: string; // link del botón
-  bottomText?: React.ReactNode;
-  bottomTextHiglight?: React.ReactNode;
+  bottomText?: string;
   className?: string;
 };
 
@@ -20,10 +19,20 @@ export default function DonorsAndAllies({
   ctaText,
   ctaHref,
   bottomText,
-  bottomTextHiglight,
   className = "",
 }: DonorsAndAlliesProps) {
   const reduce = useReducedMotion();
+  let bottomTextNoHiglight = "";
+  let bottomTextHiglight = "";
+  if (bottomText) {
+    const match = bottomText.match(/\*(.*?)\*/);
+
+    bottomTextHiglight = match?.[1] ?? "";
+
+    bottomTextNoHiglight = match
+      ? bottomText.replace(/\*(.*?)\*/, "")
+      : bottomText;
+  }
 
   return (
     <motion.section
@@ -76,7 +85,6 @@ export default function DonorsAndAllies({
                 <img
                   src={img}
                   alt="Logo"
-                  loading="lazy"
                   className="block w-auto h-auto transition-opacity duration-300 hover:opacity-90"
                 />
               </div>
@@ -85,7 +93,7 @@ export default function DonorsAndAllies({
         </div>
 
         {/* Texto inferior */}
-        {bottomText && (
+        {bottomTextNoHiglight && (
           <motion.p
             className="w-full mx-auto text-center text-lg md:text-xl font-light text-primary mt-10 md:mt-12 leading-relaxed"
             initial={{ opacity: 0, y: reduce ? 0 : 20 }}
@@ -93,9 +101,11 @@ export default function DonorsAndAllies({
             transition={{ duration: 0.6, ease: "easeOut" }}
             viewport={{ once: true }}
           >
-            {bottomText}
+            {bottomTextNoHiglight}
             <br className="md:hidden" />{" "}
-            {bottomTextHiglight && <span className="font-semibold">{bottomTextHiglight}</span>}
+            {bottomTextHiglight && (
+              <span className="font-semibold">{bottomTextHiglight}</span>
+            )}
           </motion.p>
         )}
 

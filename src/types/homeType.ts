@@ -72,3 +72,76 @@ export interface Mediasrc {
 export interface MediasrcNode {
   sourceUrl: string;
 }
+
+export interface FeatImageEdges {
+  edges: FeatImage[];
+}
+
+export interface FeatImage {
+  node: {
+    featuredImage: {
+      node: {
+        sourceUrl: string;
+      };
+    };
+  };
+}
+export interface SeccionHistoriasDeExito {
+  title: string;
+  buttontext: string;
+}
+
+export interface SeccionImpactoDesarrollo {
+  title: string;
+  description: string;
+  buttontext: string;
+  buttonurl: null;
+  images: FeatImageEdges;
+}
+
+export interface NumberText {
+  number: string;
+  text: string;
+}
+
+export interface PostsResponse {
+  data: DataPosts;
+}
+
+export interface DataPosts {
+  posts: Posts;
+}
+export interface DataPost {
+  post: EdgeNodeHistoria;
+}
+
+export interface Posts {
+  edges: EdgeHistoria[];
+}
+
+export interface EdgeHistoria {
+  node: EdgeNodeHistoria;
+}
+
+export interface EdgeNodeHistoria {
+  databaseId: number;
+  historiasdeexito: Historiasdeexito;
+}
+
+export interface Historiasdeexito {
+  title: string;
+  preview: string;
+  content: string;
+  buttontext: string;
+  thumb: Image;
+  image: Image;
+  databaseId?: number;
+}
+
+export interface Image {
+  node: ImageNode;
+}
+
+export interface ImageNode {
+  sourceUrl: string;
+}

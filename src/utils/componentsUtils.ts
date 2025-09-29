@@ -1,6 +1,11 @@
 import { MediaType, MediaAlignType } from "../components/layout/ContentSection";
 import { ButtonVariant } from "../components/shared/Button";
-import { SeccionImpactoResumen, SectionContent } from "../types/homeType";
+import {
+  SeccionHistoriasDeExito,
+  SeccionImpactoDesarrollo,
+  SeccionImpactoResumen,
+  SectionContent,
+} from "../types/homeType";
 
 export const mapSectionContentToProps = (s?: SectionContent | null) => {
   return {
@@ -44,5 +49,45 @@ export const mapImpactoResumenToProps = (s?: SeccionImpactoResumen | null) => {
 
     // indicadores
     items: [s?.beneficiarios!, s?.estadosimpactados!, s?.money!],
+  };
+};
+
+export const mapImpactoDesarrolloToProps = (
+  s?: SeccionImpactoDesarrollo | null
+) => {
+  return {
+    // básicos
+    title: s?.title ?? "",
+    description: s?.description ?? "",
+    buttonText: s?.buttontext ?? "",
+    buttonUrl: s?.buttonurl ?? "",
+    items:
+      s?.images.edges?.map((edge) => edge.node.featuredImage.node.sourceUrl) ??
+      [],
+  };
+};
+
+export const mapDontantesAliadosToProps = (
+  s?: SeccionImpactoDesarrollo | null
+) => {
+  return {
+    // básicos
+    title: s?.title ?? "",
+    bottomText: s?.description ?? "",
+    ctaText: s?.buttontext ?? "",
+    ctaHref: s?.buttonurl ?? "",
+    images:
+      s?.images.edges?.map((edge) => edge.node.featuredImage.node.sourceUrl) ??
+      [],
+  };
+};
+
+export const mapHistoriasDeExitoToProps = (
+  s?: SeccionHistoriasDeExito | null
+) => {
+  return {
+    // básicos
+    title: s?.title ?? "",
+    ctaText: s?.buttontext ?? "",
   };
 };

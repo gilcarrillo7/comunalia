@@ -244,7 +244,6 @@ const FundacionesSociasPage: React.FC<PageProps> = () => {
             <img
               src="/images/fsocias.png"
               className="h-full w-full object-cover md:h-[400px]"
-              loading="lazy"
             />
           </motion.figure>
         </div>
@@ -270,7 +269,6 @@ const FundacionesSociasPage: React.FC<PageProps> = () => {
           <img
             src="/images/fsocias2.png"
             className="h-full w-full object-cover md:h-[380px]"
-            loading="lazy"
           />
         </motion.figure>
         <div className="relative p-4 overflow-hidden bg-secondary basis-2/3 flex flex-col gap-4 justify-center items-center">

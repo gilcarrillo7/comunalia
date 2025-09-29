@@ -2,23 +2,23 @@
 import React from "react";
 import { motion } from "framer-motion";
 import VectorFooter from "../../images/vectorFooter.png";
+import { Link } from "gatsby";
 
 type StoryDetailProps = {
   /** Ej: "circulos-de-dar" (sin / inicial) */
-  slug: string;
+  databaseId: number;
   /** Título visible */
   titulo: string;
   /** URL de la imagen del header */
   imagen: string;
   /** HTML del contenido (párrafos, enlaces, etc.) */
   content: string;
-  next: string;
+  next: number;
   /** Clase opcional para ajustes locales */
   className?: string;
 };
 
 export default function StoryDetail({
-  slug,
   titulo,
   imagen,
   content,
@@ -70,14 +70,14 @@ export default function StoryDetail({
 
         {/* CTAs inferiores */}
         <div className="flex flex-col gap-6 pb-10">
-          <a
-            href={next}
+          <Link
+            to={`/historias?id=${next}`}
             className="text-xl md:text-3xl text-primary font-semibold hover:opacity-80 transition-opacity"
           >
             Siguiente historia
-          </a>
+          </Link>
           <a
-            href="/historias"
+            href="/#historias_de_exito"
             className="text-lg md:text-xl text-primary hover:opacity-80 transition-opacity"
           >
             Ver todas

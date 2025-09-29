@@ -192,7 +192,6 @@ export default function ContentSection({
               <img
                 src={mediaSrc}
                 alt={title || ""}
-                loading="lazy"
                 className={classnames(`${mediaClassname} max-w-full`, {
                   "w-1/2 sm:w-3/5 md:w-auto md:max-w-[30%] md:absolute h-auto md:max-h-screen -ml-[1rem] sm:-ml-[5rem] md:-ml-0 md:left-0 md:top-1/2 md:-translate-y-1/2":
                     mediaAlign === "border",

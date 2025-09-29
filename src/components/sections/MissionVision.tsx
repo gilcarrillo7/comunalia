@@ -89,7 +89,6 @@ export default function MissionVision({
                 src={missionImage}
                 alt={missionImageAlt}
                 className="h-full w-full object-cover"
-                loading="lazy"
               />
             </motion.figure>
 
@@ -160,7 +159,6 @@ export default function MissionVision({
               src={visionImage}
               alt={visionImageAlt}
               className="h-full w-full object-cover md:h-[400px]"
-              loading="lazy"
             />
           </motion.figure>
         </div>
