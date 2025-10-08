@@ -1,14 +1,13 @@
 import * as React from "react";
-import { type HeadFC, type PageProps } from "gatsby";
+import type { HeadFC, PageProps } from "gatsby";
+import Layout from "../../components/layout/Layout";
+import { ENDPOINT } from "../../constants";
 import { request } from "graphql-request";
-import Layout from "../components/layout/Layout";
-import { ENDPOINT } from "../constants";
-import FullLoader from "../components/layout/FullLoader";
-import { HomeResponse } from "../types/homeType";
-import { QUERY_PAGE_BY_URI } from "../utils/querys";
-import { renderSection } from "../utils/renderer";
+import FullLoader from "../../components/layout/FullLoader";
+import { HomeResponse } from "../../types/homeType";
+import { QUERY_PAGE_BY_URI } from "../../utils/querys_en";
+import { renderSection } from "../../utils/renderer";
 import { useState } from "react";
-import SEO from "../components/layout/SEO";
 
 const IndexPage: React.FC<PageProps> = () => {
   const [loading, setLoading] = useState(true);
@@ -23,17 +22,17 @@ const IndexPage: React.FC<PageProps> = () => {
       try {
         const [response] = await Promise.all([
           request<HomeResponse>(ENDPOINT, QUERY_PAGE_BY_URI, {
-            uri: "invierte-en-comunidades",
+            uri: "quiero-ser-una-fc-socia",
           }),
         ]);
 
         if (!active) return;
 
-        const edges = response?.page?.home?.secciones?.edges ?? [];
+        const edges =
+          response?.page?.translations[0]?.home?.secciones?.edges ?? [];
         const ingles = response?.page?.home?.ingles ?? false;
-
-        setEdges(edges);
         setEnglish(ingles);
+        setEdges(edges);
       } catch (error) {
         if (active) console.error("Error fetching data:", error);
       } finally {
@@ -45,29 +44,20 @@ const IndexPage: React.FC<PageProps> = () => {
       active = false;
     };
   }, []);
+
   return (
     <>
       {loading ? (
         <FullLoader />
       ) : (
-        <Layout lang={english} english={false}>
+        <Layout darkMode lang english>
           {renderSection({ edges })}
         </Layout>
       )}
-      <SEO
-        title={"Comunalia"}
-        description={
-          "Somos una alianza de Fundaciones Comunitarias de México..."
-        }
-        image={"/comunalia.jpg"}
-        pathname={"/invierte_en_comunidades"}
-        locale={"es_MX"}
-        type="website"
-      />
     </>
   );
 };
 
 export default IndexPage;
 
-export const Head: HeadFC = () => <title>Invierte en comunidades</title>;
+export const Head: HeadFC = () => <title>Quiero ser una FC socia</title>;

@@ -1,19 +1,18 @@
-export interface HomeType {
-  seccion1: SectionContent | null;
-  seccion2: SectionContent | null;
-  seccion3: SectionContent | null;
-}
+import { FoundationItem } from "../components/sections/FoundationsGrid";
 
 export interface HomeResponse {
   pageBy: PageBy;
+  page: PageBy;
 }
 
 export interface PageBy {
   home: Home;
+  translations: PageBy[];
 }
 
 export interface Home {
   secciones: Secciones;
+  ingles: boolean;
 }
 
 export interface Secciones {
@@ -27,6 +26,18 @@ export interface Edge {
 export interface EdgeNode {
   seccioncontenido: SectionContent;
   seccionimpactoresumen: SeccionImpactoResumen;
+  seccionmisionvisionvalores: SeccionMisionVisionValores;
+}
+
+export interface SeccionMisionVisionValores {
+  titlemision: string;
+  textmision: string;
+  titlevision: string;
+  textvision: string;
+  titlevalores: string;
+  misionimg: Mediasrc;
+  visionimg: Mediasrc;
+  valores: string;
 }
 
 export interface SeccionImpactoResumen {
@@ -63,6 +74,7 @@ export interface SectionContent {
   containerclassname?: null | string;
   mediaalign?: string | null;
   mediaclassname?: null | string;
+  video?: null | string;
 }
 
 export interface Mediasrc {
@@ -79,6 +91,7 @@ export interface FeatImageEdges {
 
 export interface FeatImage {
   node: {
+    title: string;
     featuredImage: {
       node: {
         sourceUrl: string;
@@ -125,6 +138,7 @@ export interface EdgeHistoria {
 
 export interface EdgeNodeHistoria {
   databaseId: number;
+  categories: { nodes: { slug: string }[] };
   historiasdeexito: Historiasdeexito;
 }
 
@@ -144,4 +158,33 @@ export interface Image {
 
 export interface ImageNode {
   sourceUrl: string;
+}
+
+export interface SeccionConsejo {
+  title: string;
+  equipo: FeatImageEdges;
+  consejo: FeatImageEdges;
+}
+export interface SeccionBannerFucAsociada {
+  title: string;
+  button1text: string;
+  button1href: string;
+  button2text: string;
+  button2href: string;
+  image: Image;
+}
+export interface SeccionAccordeon {
+  title: string;
+  caracteristicas: string;
+}
+export interface SeccionFundaciones {
+  title: string;
+  image: Image;
+  fundaciones: {
+    edges: {
+      node: {
+        fundacionasociada: FoundationItem;
+      };
+    }[];
+  };
 }

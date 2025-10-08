@@ -11,6 +11,7 @@ type SuccessStoriesProps = {
   title: string;
   ctaText: string;
   items: Historiasdeexito[];
+  english: boolean;
   className?: string;
 };
 
@@ -18,6 +19,7 @@ export default function SuccessStories({
   title,
   ctaText,
   items,
+  english = false,
   className = "",
 }: SuccessStoriesProps) {
   const reduce = useReducedMotion();
@@ -84,7 +86,11 @@ export default function SuccessStories({
                     <button
                       type="button"
                       onClick={() =>
-                        navigate(`/historias/?id=${it.databaseId ?? ""}`)
+                        navigate(
+                          english
+                            ? `/en/historias/?id=${it.databaseId ?? ""}`
+                            : `/historias/?id=${it.databaseId ?? ""}`
+                        )
                       }
                       className="text-left"
                       aria-label={it.title}
@@ -128,7 +134,11 @@ export default function SuccessStories({
                       <motion.button
                         type="button"
                         onClick={() =>
-                          navigate(`/historias/?id=${it.databaseId ?? ""}`)
+                          navigate(
+                            english
+                              ? `/en/historias/?id=${it.databaseId ?? ""}`
+                              : `/historias/?id=${it.databaseId ?? ""}`
+                          )
                         }
                         className="mt-5 text-primary font-normal inline-flex flex-col w-full items-center"
                         initial={{ opacity: 0, y: reduce ? 0 : 8 }}
@@ -187,7 +197,11 @@ export default function SuccessStories({
               <button
                 type="button"
                 onClick={() =>
-                  navigate(`/historias/?id=${it.databaseId ?? ""}`)
+                  navigate(
+                    english
+                      ? `/en/historias/?id=${it.databaseId ?? ""}`
+                      : `/historias/?id=${it.databaseId ?? ""}`
+                  )
                 }
                 className="text-left"
                 aria-label={it.title}
@@ -238,7 +252,11 @@ export default function SuccessStories({
                 <motion.button
                   type="button"
                   onClick={() =>
-                    navigate(`/historias/?id=${it.databaseId ?? ""}`)
+                    navigate(
+                      english
+                        ? `/en/historias/?id=${it.databaseId ?? ""}`
+                        : `/historias/?id=${it.databaseId ?? ""}`
+                    )
                   }
                   className="mt-5 text-primary font-normal inline-flex flex-col w-full items-center"
                   initial={{ opacity: 0, y: reduce ? 0 : 8 }}

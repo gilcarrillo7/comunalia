@@ -3,9 +3,10 @@ import { SocialIcons } from "./SocialIcons";
 import Button from "../shared/Button";
 import FooterImg from "../../images/footer1.png";
 import VectorFooter from "../../images/vectorFooter.png";
-import { Link, navigate } from "gatsby";
+import { Link } from "gatsby";
 
 type Props = {
+  english: boolean;
   year?: number;
   newsHref?: string;
   privacyHref?: string;
@@ -15,6 +16,7 @@ type Props = {
 };
 
 export default function Footer({
+  english,
   year = new Date().getFullYear(),
   siteEmail = "contacto@comunalia.org.mx",
   phone = "2719 6670",
@@ -48,10 +50,11 @@ export default function Footer({
               {/* Botón Noticias */}
               <Button
                 onClick={() =>
-                  (window.location.href = "https://blog.comunalia.org.mx/noticias/")
+                  (window.location.href =
+                    "https://blog.comunalia.org.mx/noticias/")
                 }
               >
-                Noticias
+                {english ? "News" : "Noticias"}
               </Button>
               {/* Redes */}
               <SocialIcons />
@@ -64,13 +67,16 @@ export default function Footer({
           {/* Col 4: datos de contacto y crédito */}
           <div className="shrink-0 mx-auto w-2/3 lg:w-[400px]">
             <div className="py-5 px-4 xl:pr-24 space-y-2 text-[10px] sm:text-sm leading-4 lg:leading-6 text-primary">
-              <p className="font-extrabold">Dirección:</p>
+              <p className="font-extrabold">
+                {english ? "Address:" : "Dirección:"}
+              </p>
               <p>
                 YCo. Centro de Innovación e Impacto Social | Av. Del Estado
                 #208, Col. Tecnológico, 64700, Monterrey, N.L.
               </p>
               <p className="mt-2 font-extrabold">
-                Teléfono: <span className="font-normal">{phone}</span>
+                {english ? "Phone" : "Teléfono:"}{" "}
+                <span className="font-normal">{phone}</span>
               </p>
               <p>
                 <a
@@ -81,7 +87,9 @@ export default function Footer({
                 </a>
               </p>
               <p className="mt-2">
-                Diseño y desarrollo web por{" "}
+                {english
+                  ? "Design and development by"
+                  : "Diseño y desarrollo web por"}{" "}
                 <a
                   href={devHref}
                   className="underline decoration-primary underline-offset-2 hover:opacity-80"
@@ -103,9 +111,11 @@ export default function Footer({
           <span className="mx-2 hidden sm:block">·</span>
           <Link
             className="underline underline-offset-2 hover:opacity-90"
-            to="/aviso_de_privacidad"
+            to="/en/aviso_de_privacidad"
           >
-            Consulta nuestro aviso de privacidad.
+            {english
+              ? "See our privacy policy."
+              : "Consulta nuestro aviso de privacidad."}
           </Link>
         </div>
       </div>

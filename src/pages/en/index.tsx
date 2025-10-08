@@ -2,19 +2,17 @@ import * as React from "react";
 import type { HeadFC, PageProps } from "gatsby";
 import { request } from "graphql-request";
 
-import Layout from "../components/layout/Layout";
-import { ENDPOINT } from "../constants";
+import Layout from "../../components/layout/Layout";
+import { ENDPOINT } from "../../constants";
 import { useEffect, useState } from "react";
-import { DataPosts, HomeResponse } from "../types/homeType";
-import { QUERY_HISTORIAS, QUERY_PAGE_BY_URI } from "../utils/querys";
-import FullLoader from "../components/layout/FullLoader";
-import { renderSection } from "../utils/renderer";
-import SEO from "../components/layout/SEO";
+import { DataPosts, HomeResponse } from "../../types/homeType";
+import { QUERY_HISTORIAS, QUERY_PAGE_BY_URI } from "../../utils/querys_en";
+import FullLoader from "../../components/layout/FullLoader";
+import { renderSection } from "../../utils/renderer";
 
 const IndexPage: React.FC<PageProps> = () => {
   const [loading, setLoading] = useState(true);
   const [edges, setEdges] = useState<Array<any>>([]);
-  const [english, setEnglish] = useState(false);
   const [stories, setStories] = useState<Array<any>>([]);
 
   useEffect(() => {
@@ -30,16 +28,14 @@ const IndexPage: React.FC<PageProps> = () => {
 
         if (!active) return;
 
-        const edges = homeRes?.page?.home?.secciones?.edges ?? [];
-        const ingles = homeRes?.page?.home?.ingles ?? false;
+        const edges = homeRes?.page?.translations[0]?.home?.secciones?.edges ?? [];
         const storiesEdges = historiasRes?.posts?.edges ?? [];
 
         setEdges(edges);
-        setEnglish(ingles);
         setStories(
           storiesEdges.map(({ node }) => ({
             databaseId: node.databaseId,
-            english: false,
+            english: true,
             ...node.historiasdeexito,
           }))
         );
@@ -72,20 +68,10 @@ const IndexPage: React.FC<PageProps> = () => {
       {loading ? (
         <FullLoader />
       ) : (
-        <Layout lang={english} english={false}>
+        <Layout lang english>
           {renderSection({ edges, stories })}
         </Layout>
       )}
-      <SEO
-        title={"Comunalia"}
-        description={
-          "Somos una alianza de Fundaciones Comunitarias de México..."
-        }
-        image={"/comunalia.jpg"}
-        pathname={"/"}
-        locale={"es_MX"}
-        type="website"
-      />
     </>
   );
 };

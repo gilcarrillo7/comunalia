@@ -20,9 +20,18 @@ export function getCategorySlug(
 
 /** 2) Convierte 'seccion-impacto-resumen' -> 'seccionimpactoresumen' */
 export function slugToPropKey(slug: string): string {
-  // quita diacríticos y caracteres no alfanuméricos (incluye guiones)
-  const normalized = slug.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-  return normalized.toLowerCase().replace(/[^a-z0-9]/g, "");
+  // 1) Normaliza y quita diacríticos
+  let s = slug.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+  // 2) Normaliza espacios/slashes y minúsculas
+  s = s.trim().toLowerCase().replace(/\/+$/, ""); // quita slashes finales por si acaso
+
+  // 3) Si el slug termina en "-en", elimínalo
+  s = s.replace(/-en$/, "");
+
+  // 4) Quita todo lo no alfanumérico (incluye guiones)
+  return s.replace(/[^a-z0-9]/g, "");
+
 }
 
 /**

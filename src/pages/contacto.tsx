@@ -4,10 +4,11 @@ import Layout from "../components/layout/Layout";
 import Button from "../components/shared/Button";
 import Imagen from "../images/contacto.png";
 import { HeadFC, PageProps } from "gatsby";
+import SEO from "../components/layout/SEO";
 
 const IndexPage: React.FC<PageProps> = () => {
-  const WP_BASE_URL = "";
-  const CF7_FORM_ID = "";
+  const WP_BASE_URL = "https://www.comunalia.org.mx/wp";
+  const CF7_FORM_ID = "6";
   const CF7_ENDPOINT = `${WP_BASE_URL}/wp-json/contact-form-7/v1/contact-forms/${CF7_FORM_ID}/feedback`;
 
   const fadeInUp = (delay = 0) => ({
@@ -71,103 +72,115 @@ const IndexPage: React.FC<PageProps> = () => {
   };
 
   return (
-    <Layout darkMode>
-      <section className="min-h-screen relative flex items-center justify-end bg-primary text-tertiary px-4 pt-24 pb-16 mx-auto">
-        <img
-          src={Imagen}
-          alt="Contacto"
-          className="hidden md:block absolute left-0 bottom-0 z-0 max-h-[70%]"
-        />
-        <div className="container z-10">
-          <div className="max-w-3xl ml-auto text-lg md:text-xl lg:text-2xl md:mr-24">
-            <motion.h2
-              className="text-left text-2xl md:text-3xl lg:text-5xl text-tertiary mb-12 md:mb-24"
-              {...fadeInUp(0)}
-            >
-              Contacto
-            </motion.h2>
-            <form className="w-full" onSubmit={onSubmit}>
-              <div className="w-full flex flex-col md:flex-row gap-12 md:gap-24 mb-12 md:mb-24">
-                <motion.div
-                  className="flex flex-col md:w-1/2"
-                  {...fadeInUp(0.1)}
-                >
-                  <input
-                    id="name"
-                    name="your-name"
-                    type="text"
-                    className="bg-transparent border-0 focus:outline-none py-2 text-tertiary placeholder-tertiary"
-                    placeholder="Nombre"
-                    value={form["your-name"]}
-                    onChange={onChange}
-                    required
-                  />
-                  <div className="border-white border-b w-full"/>
-                </motion.div>
-                <motion.div
-                  className="flex flex-col md:w-1/2"
-                  {...fadeInUp(0.2)}
-                >
-                  <input
-                    id="email"
-                    name="your-email"
-                    type="email"
-                    className="bg-transparent border-0 focus:outline-none py-2 text-tertiary placeholder-tertiary"
-                    placeholder="Email"
-                    value={form["your-email"]}
-                    onChange={onChange}
-                    required
-                  />
-                  <div className="border-white border-b w-full"/>
-                </motion.div>
-              </div>
-              <div className="w-full flex flex-col md:flex-row gap-12 md:gap-24 mb-12 md:mb-24">
-                <motion.div
-                  className="flex flex-col md:w-1/2"
-                  {...fadeInUp(0.3)}
-                >
-                  <textarea
-                    id="message"
-                    name="your-message"
-                    rows={1}
-                    className="bg-transparent border-0 focus:outline-none py-2 text-tertiary placeholder-tertiary resize-none"
-                    placeholder="Mensaje"
-                    value={form["your-message"]}
-                    onChange={onChange}
-                    required
-                  />
-                  <div className="border-white border-b w-full"/>
-                </motion.div>
-                <div className="text-right flex items-end md:w-1/2">
-                  <img
-                    src={Imagen}
-                    alt="Contacto"
-                    className="absolute left-0 bottom-0 md:hidden w-24 z-0"
-                  />
-
-                  {status !== "ok" && status !== "error" && (
-                    <Button
-                      type="submit"
-                      variant="outline"
-                      containerClassName="ml-28"
-                      disabled={status === "loading"}
-                    >
-                      {status === "loading" ? "Enviando..." : "Enviar"}
-                    </Button>
-                  )}
-                  {status === "ok" && (
-                    <p className="text-green-300 mt-2">{serverMessage}</p>
-                  )}
-                  {status === "error" && (
-                    <p className="text-red-300 mt-2">{serverMessage}</p>
-                  )}
+    <>
+      <Layout darkMode lang={false} english={false}>
+        <section className="min-h-screen relative flex items-center justify-end bg-primary text-tertiary px-4 pt-24 pb-16 mx-auto">
+          <img
+            src={Imagen}
+            alt="Contacto"
+            className="hidden md:block absolute left-0 bottom-0 z-0 max-h-[70%]"
+          />
+          <div className="container z-10">
+            <div className="max-w-3xl ml-auto text-lg md:text-xl lg:text-2xl md:mr-24">
+              <motion.h2
+                className="text-left text-2xl md:text-3xl lg:text-5xl text-tertiary mb-12 md:mb-24"
+                {...fadeInUp(0)}
+              >
+                Contacto
+              </motion.h2>
+              <form className="w-full" onSubmit={onSubmit}>
+                <div className="w-full flex flex-col md:flex-row gap-12 md:gap-24 mb-12 md:mb-24">
+                  <motion.div
+                    className="flex flex-col md:w-1/2"
+                    {...fadeInUp(0.1)}
+                  >
+                    <input
+                      id="name"
+                      name="your-name"
+                      type="text"
+                      className="bg-transparent border-0 focus:outline-none py-2 text-tertiary placeholder-tertiary"
+                      placeholder="Nombre"
+                      value={form["your-name"]}
+                      onChange={onChange}
+                      required
+                    />
+                    <div className="border-white border-b w-full" />
+                  </motion.div>
+                  <motion.div
+                    className="flex flex-col md:w-1/2"
+                    {...fadeInUp(0.2)}
+                  >
+                    <input
+                      id="email"
+                      name="your-email"
+                      type="email"
+                      className="bg-transparent border-0 focus:outline-none py-2 text-tertiary placeholder-tertiary"
+                      placeholder="Email"
+                      value={form["your-email"]}
+                      onChange={onChange}
+                      required
+                    />
+                    <div className="border-white border-b w-full" />
+                  </motion.div>
                 </div>
-              </div>
-            </form>
+                <div className="w-full flex flex-col md:flex-row gap-12 md:gap-24 mb-12 md:mb-24">
+                  <motion.div
+                    className="flex flex-col md:w-1/2"
+                    {...fadeInUp(0.3)}
+                  >
+                    <textarea
+                      id="message"
+                      name="your-message"
+                      rows={1}
+                      className="bg-transparent border-0 focus:outline-none py-2 text-tertiary placeholder-tertiary resize-none"
+                      placeholder="Mensaje"
+                      value={form["your-message"]}
+                      onChange={onChange}
+                      required
+                    />
+                    <div className="border-white border-b w-full" />
+                  </motion.div>
+                  <div className="text-right flex items-end md:w-1/2">
+                    <img
+                      src={Imagen}
+                      alt="Contacto"
+                      className="absolute left-0 bottom-0 md:hidden w-24 z-0"
+                    />
+
+                    {status !== "ok" && status !== "error" && (
+                      <Button
+                        type="submit"
+                        variant="outline"
+                        containerClassName="ml-28"
+                        disabled={status === "loading"}
+                      >
+                        {status === "loading" ? "Enviando..." : "Enviar"}
+                      </Button>
+                    )}
+                    {status === "ok" && (
+                      <p className="text-green-300 mt-2">{serverMessage}</p>
+                    )}
+                    {status === "error" && (
+                      <p className="text-red-300 mt-2">{serverMessage}</p>
+                    )}
+                  </div>
+                </div>
+              </form>
+            </div>
           </div>
-        </div>
-      </section>
-    </Layout>
+        </section>
+      </Layout>
+      <SEO
+        title={"Comunalia"}
+        description={
+          "Somos una alianza de Fundaciones Comunitarias de México..."
+        }
+        image={"/comunalia.jpg"}
+        pathname={"/contacto"}
+        locale={"es_MX"}
+        type="website"
+      />
+    </>
   );
 };
 export default IndexPage;

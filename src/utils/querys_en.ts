@@ -1,9 +1,10 @@
 export const QUERY_HISTORIAS = `
 query HomeByUri {
-  posts(where: {categoryName: "historias-de-exito"}, first: 100) {
+  posts(where: {categoryName: "historias-de-exito-en"}, first: 100) {
     edges {
       node {
         databaseId
+        categories{ nodes { slug } }
         historiasdeexito {
           title
           preview
@@ -23,11 +24,13 @@ query HomeByUri {
       }
     }
   }
-}`;
+}
+`;
 export const QUERY_HISTORIA = `
   query HistoriaById($id: ID!) {
     post(id: $id, idType: DATABASE_ID) {
       databaseId
+    	categories{ nodes{slug}}
       historiasdeexito {
         title
         preview
@@ -54,7 +57,7 @@ export const QUERY_PREV_HISTORIA_CANDIDATES = `
   ) {
     posts(
       where: {
-        categoryName: "historias-de-exito"
+        categoryName: "historias-de-exito-en"
         orderby: { field: DATE, order: DESC }
         dateQuery: {
           before: { year: $beforeYear, month: $beforeMonth, day: $beforeDay }
@@ -71,7 +74,7 @@ export const QUERY_LAST_HISTORIA_ID = `
   query LastHistoriaId {
     posts(
       where: {
-        categoryName: "historias-de-exito"
+        categoryName: "historias-de-exito-en"
         orderby: { field: DATE, order: DESC }
       }
       first: 1
@@ -86,25 +89,31 @@ query PageAllSections($uri: ID! ) {
     id
     uri
     language { code locale }
-    home {
-      ingles
-      secciones {
-        edges {
-          node {
-            id
-            __typename
-            ...SectionContent
-            ...SectionImpacto
-            ...SectionImpactoDesarrollo
-            ...SectionStories
-            ...SectionDonantes
-            ...VisionMision
-            ...SeccionConsejo
-            ...SeccionEquipo
-            ...SectionBanner
-            ...SectionCaracteristicas
-            ...SeccionFundaciones
-            ...SectionBannerFCSocia
+    translations {
+      id
+      uri
+      language { code locale }
+      ... on Page {
+        home {
+          secciones {
+            edges {
+              node {
+                id
+                __typename
+                ...SectionContent
+                ...SectionImpacto
+                ...SectionImpactoDesarrollo
+                ...SectionStories
+                ...SectionDonantes
+                ...VisionMision
+                ...SeccionConsejo
+                ...SeccionEquipo
+                ...SectionBanner
+                ...SectionCaracteristicas
+                ...SeccionFundaciones
+                ...SectionBannerFCSocia
+              }
+            }
           }
         }
       }

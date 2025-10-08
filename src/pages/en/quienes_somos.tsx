@@ -1,14 +1,13 @@
 import * as React from "react";
 import type { HeadFC, PageProps } from "gatsby";
-import Layout from "../components/layout/Layout";
-import { ENDPOINT } from "../constants";
+import Layout from "../../components/layout/Layout";
+import { ENDPOINT } from "../../constants";
 import { request } from "graphql-request";
-import { HomeResponse } from "../types/homeType";
-import { QUERY_PAGE_BY_URI } from "../utils/querys";
-import FullLoader from "../components/layout/FullLoader";
+import { HomeResponse } from "../../types/homeType";
+import { QUERY_PAGE_BY_URI } from "../../utils/querys_en";
+import FullLoader from "../../components/layout/FullLoader";
 import { useEffect, useState } from "react";
-import { renderSection } from "../utils/renderer";
-import SEO from "../components/layout/SEO";
+import { renderSection } from "../../utils/renderer";
 
 const QuienesSomosPage: React.FC<PageProps> = () => {
   const [loading, setLoading] = useState(true);
@@ -29,7 +28,8 @@ const QuienesSomosPage: React.FC<PageProps> = () => {
 
         if (!active) return;
 
-        const edges = response?.page?.home?.secciones?.edges ?? [];
+        const edges =
+          response?.page?.translations[0]?.home?.secciones?.edges ?? [];
         const ingles = response?.page?.home?.ingles ?? false;
         setEnglish(ingles);
         setEdges(edges);
@@ -50,20 +50,10 @@ const QuienesSomosPage: React.FC<PageProps> = () => {
       {loading ? (
         <FullLoader />
       ) : (
-        <Layout darkMode lang={english} english={false}>
+        <Layout darkMode lang english>
           {renderSection({ edges })}
         </Layout>
       )}
-      <SEO
-        title={"Comunalia"}
-        description={
-          "Somos una alianza de Fundaciones Comunitarias de México..."
-        }
-        image={"/comunalia.jpg"}
-        pathname={"/quienes_somos"}
-        locale={"es_MX"}
-        type="website"
-      />
     </>
   );
 };

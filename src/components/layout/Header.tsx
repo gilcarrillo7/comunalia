@@ -12,13 +12,13 @@ import LogoWhite from "../../images/logo_white.png";
 import VectorMenu from "../../images/vectorMenu.png";
 import OpeningLeaves from "../shared/OpeningLeaves";
 
-const headerJson = {
+const headerJsonEs = {
   headerBtn: {
     btnText: "Invierte en comunidades",
     btnLink: "/invierte_en_comunidades",
   },
 };
-const navItems = [
+const navItemsEs = [
   { link: "Quiénes somos", url: "/quienes_somos" },
   {
     link: "Fundaciones socias",
@@ -32,10 +32,41 @@ const navItems = [
     url: "https://blog.comunalia.org.mx/biblioteca-virtual/",
   },
   { link: "Contacto", url: "/contacto" },
-  // { link: "English", url: "/en" },
 ];
 
-export default function Header({ darkMode }: { darkMode: boolean }) {
+const headerJsonEn = {
+  headerBtn: {
+    btnText: "Invest in communities",
+    btnLink: "/en/invierte_en_comunidades",
+  },
+};
+const navItemsEn = [
+  { link: "Who we are", url: "/en/quienes_somos" },
+  {
+    link: "Partner foundations",
+    url: "/en/fundaciones_socias",
+  },
+  { link: "Services", url: "/en/servicios" },
+  { link: "Success stories", url: "/en/#historias_de_exito" },
+  { link: "Donors and allies", url: "/en/#donantes_y_aliados" },
+  {
+    link: "Virtual library",
+    url: "https://blog.comunalia.org.mx/biblioteca-virtual/",
+  },
+  { link: "Contact us", url: "/en/contacto" },
+];
+
+export default function Header({
+  darkMode,
+  lang,
+  english,
+}: {
+  darkMode: boolean;
+  lang: boolean;
+  english?: boolean;
+}) {
+  const headerJson = english ? headerJsonEn : headerJsonEs;
+  const navItems = english ? navItemsEn : navItemsEs;
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -46,7 +77,11 @@ export default function Header({ darkMode }: { darkMode: boolean }) {
           { "bg-secondary": isOpen }
         )}
       >
-        <Link to="/" onClick={() => setIsOpen(false)} className="shrink-0">
+        <Link
+          to={english ? "/en" : "/"}
+          onClick={() => setIsOpen(false)}
+          className="shrink-0"
+        >
           <img
             src={isOpen || darkMode ? LogoWhite : Logo}
             alt="Logo Consejo Cívico"
@@ -187,6 +222,22 @@ export default function Header({ darkMode }: { darkMode: boolean }) {
                         </Link>
                       </motion.div>
                     ))}
+                    {lang && (
+                      <motion.div
+                        variants={{
+                          hidden: { opacity: 0, y: 8 },
+                          visible: { opacity: 1, y: 0 },
+                        }}
+                      >
+                        <Link
+                          to={english ? "/" : "/en"}
+                          className={`text-xl sm:text-2xl lg:text-[40px] font-light hover:text-tertiary text-primary`}
+                          onClick={() => setIsOpen(false)}
+                        >
+                          {english ? "Español" : "English"}
+                        </Link>
+                      </motion.div>
+                    )}
 
                     {/* CTA’s y redes */}
                     <motion.div
@@ -198,7 +249,9 @@ export default function Header({ darkMode }: { darkMode: boolean }) {
                     >
                       <div className="mx-auto">
                         <p className="font-light text-base md:text-lg mb-4">
-                          Soy fundación asociada
+                          {english
+                            ? "I am an associated foundation"
+                            : "Soy fundación asociada"}
                         </p>
 
                         <div className="flex flex-col gap-4 mb-8">
@@ -210,13 +263,15 @@ export default function Header({ darkMode }: { darkMode: boolean }) {
                               )
                             }
                           >
-                            Ingresa al HUB
+                            {english ? "Enter the HUB" : "Ingresa al HUB"}
                           </Button>
                           <Button
                             variant="outline"
                             onClick={() => navigate("/quiero_ser_una_fc_socia")}
                           >
-                            Quiero ser una FC socia
+                            {english
+                              ? "I want to be a FC member"
+                              : "Quiero ser una FC socia"}
                           </Button>
                         </div>
                         <div className="h-px w-full md:w-80 bg-tertiary my-6" />

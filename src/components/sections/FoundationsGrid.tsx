@@ -3,10 +3,10 @@ import React from "react";
 import { motion } from "framer-motion";
 
 export type FoundationItem = {
-  image?: string; // ruta o URL del logo
+  image?: { node: { sourceUrl: string } }; // ruta o URL del logo
   title: string; // título
   description: string; // descripción breve
-  href: string; // enlace externo
+  href: { url: string }; // enlace externo
   imageAlt?: string; // opcional: alt del logo
 };
 
@@ -34,7 +34,7 @@ export default function FoundationsGrid({ items, className = "" }: Props) {
         viewport={{ once: true, amount: 0.2 }}
       >
         {items.map((it, idx) => (
-          <motion.a
+          <motion.div
             key={`${it.title}-${idx}`}
             variants={{
               hidden: { opacity: 0, y: 12 },
@@ -47,9 +47,8 @@ export default function FoundationsGrid({ items, className = "" }: Props) {
             whileHover={{ y: -2, scale: 1.01 }}
             whileTap={{ scale: 0.995 }}
             transition={{ type: "spring", stiffness: 300, damping: 22 }}
-            className="flex items-center justify-between gap-6"
-            href={it.href}
-            target="_blank"
+            className="flex items-center justify-between gap-6 cursor-pointer"
+            onClick={() => window.open(it.href.url)}
             rel="noopener noreferrer"
           >
             {/* Bloque de texto con acento a la izquierda */}
@@ -62,7 +61,7 @@ export default function FoundationsGrid({ items, className = "" }: Props) {
                   {it.description}
                 </p>
                 <motion.a
-                  href={it.href}
+                  href={it.href.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-2 inline-block text-xs font-medium underline underline-offset-4 text-primary hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-primary/30 rounded"
@@ -70,7 +69,7 @@ export default function FoundationsGrid({ items, className = "" }: Props) {
                   whileTap={{ x: 0 }}
                   transition={{ duration: 0.15 }}
                 >
-                  {it.href}
+                  {it.href.url}
                 </motion.a>
               </div>
             </div>
@@ -89,13 +88,13 @@ export default function FoundationsGrid({ items, className = "" }: Props) {
                 }}
               >
                 <img
-                  src={it.image}
+                  src={it.image.node.sourceUrl}
                   alt={it.imageAlt || it.title}
                   className="w-36 xl:w-40 h-auto object-contain"
                 />
               </motion.div>
             )}
-          </motion.a>
+          </motion.div>
         ))}
       </motion.div>
     </section>

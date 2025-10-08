@@ -14,6 +14,7 @@ type StoryDetailProps = {
   /** HTML del contenido (párrafos, enlaces, etc.) */
   content: string;
   next: number;
+  english?: boolean;
   /** Clase opcional para ajustes locales */
   className?: string;
 };
@@ -24,6 +25,7 @@ export default function StoryDetail({
   content,
   className = "",
   next,
+  english = false,
 }: StoryDetailProps) {
   return (
     <section className={`w-full min-h-screen bg-white ${className}`}>
@@ -71,17 +73,17 @@ export default function StoryDetail({
         {/* CTAs inferiores */}
         <div className="flex flex-col gap-6 pb-10">
           <Link
-            to={`/historias?id=${next}`}
+            to={english ? `/en/historias?id=${next}` : `/historias?id=${next}`}
             className="text-xl md:text-3xl text-primary font-semibold hover:opacity-80 transition-opacity"
           >
-            Siguiente historia
+            {english ? "Next" : "Siguiente historia"}
           </Link>
-          <a
-            href="/#historias_de_exito"
+          <Link
+            to={english ? "/en/#historias_de_exito" : "/#historias_de_exito"}
             className="text-lg md:text-xl text-primary hover:opacity-80 transition-opacity"
           >
-            Ver todas
-          </a>
+            {english ? "See all" : "Ver todas"}
+          </Link>
         </div>
       </motion.div>
     </section>

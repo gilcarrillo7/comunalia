@@ -1,11 +1,10 @@
 import * as React from "react";
 import { type HeadFC, type PageProps } from "gatsby";
 import { request } from "graphql-request";
-import Layout from "../components/layout/Layout";
-import FullLoader from "../components/layout/FullLoader";
-import { ENDPOINT } from "../constants";
+import Layout from "../../components/layout/Layout";
+import FullLoader from "../../components/layout/FullLoader";
+import { ENDPOINT } from "../../constants";
 import { useState } from "react";
-import SEO from "../components/layout/SEO";
 
 const AvisoPage: React.FC<PageProps> = () => {
   const contents = `
@@ -254,7 +253,7 @@ const AvisoPage: React.FC<PageProps> = () => {
 
   const QUERY_AVISO = `
       query HomeByUri {
-        pageBy(uri: "aviso-de-privacidad") {
+        pageBy(uri: "aviso-de-privacidad-en") {
           avisodeprivacidad {
             content
           }
@@ -298,26 +297,16 @@ const AvisoPage: React.FC<PageProps> = () => {
       {loading ? (
         <FullLoader />
       ) : (
-        <Layout lang={english} english={false}>
+        <Layout lang english>
           <div className="container pt-24 pb-16 md:pt-40">
             <div className="" dangerouslySetInnerHTML={{ __html: content }} />
           </div>
         </Layout>
       )}
-      <SEO
-        title={"Comunalia"}
-        description={
-          "Somos una alianza de Fundaciones Comunitarias de México..."
-        }
-        image={"/comunalia.jpg"}
-        pathname={"/aviso_de_privacidad"}
-        locale={"es_MX"}
-        type="website"
-      />
     </>
   );
 };
 
 export default AvisoPage;
 
-export const Head: HeadFC = () => <title>Aviso de privacidad</title>;
+export const Head: HeadFC = () => <title>Privacy Policy</title>;

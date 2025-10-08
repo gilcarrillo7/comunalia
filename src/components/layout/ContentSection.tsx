@@ -35,6 +35,7 @@ type SectionProps = {
   titleClassname?: string | null;
   containerClassname?: string | null;
   mediaClassname?: string | null;
+  video?: string | null;
 };
 
 /** Animaciones suaves */
@@ -65,8 +66,8 @@ export default function ContentSection({
   titleClassname = "text-tertiary",
   containerClassname = "",
   mediaClassname = "",
+  video = "",
 }: SectionProps) {
-
   const handleButtonClick = (buttonLink: string) => {
     if (!buttonLink) return;
     if (buttonLink.startsWith("http")) {
@@ -211,7 +212,7 @@ export default function ContentSection({
               />
             )}
 
-            {!leaves && mediaType === "video" && mediaSrc && (
+            {!leaves && mediaType === "video" && video && (
               <motion.div
                 className="w-full h-[325px]"
                 initial={{ opacity: 0, y: 8 }}
@@ -223,7 +224,7 @@ export default function ContentSection({
                   width="100%"
                   height="100%"
                   controls
-                  src={mediaSrc}
+                  src={video}
                 />
               </motion.div>
             )}

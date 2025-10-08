@@ -90,7 +90,6 @@ export default function ImpactoResumen({
   buttonUrl = "",
   items = DATA,
 }: Props) {
-  console.log("ImpactoResumen items:", items);
   const [idx, setIdx] = useState(0);
 
   const handlers = useSwipeable({

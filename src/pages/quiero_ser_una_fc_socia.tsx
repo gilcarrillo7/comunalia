@@ -1,54 +1,70 @@
 import * as React from "react";
 import type { HeadFC, PageProps } from "gatsby";
 import Layout from "../components/layout/Layout";
-import ContentSection from "../components/layout/ContentSection";
-import { COLORS } from "../constants";
+import { ENDPOINT } from "../constants";
+import { request } from "graphql-request";
+import FullLoader from "../components/layout/FullLoader";
+import { HomeResponse } from "../types/homeType";
+import { QUERY_PAGE_BY_URI } from "../utils/querys";
+import { renderSection } from "../utils/renderer";
+import { useState } from "react";
+import SEO from "../components/layout/SEO";
 
 const IndexPage: React.FC<PageProps> = () => {
+  const [loading, setLoading] = useState(true);
+  const [edges, setEdges] = useState<Array<any>>([]);
+  const [english, setEnglish] = useState(false);
+
+  React.useEffect(() => {
+    let active = true;
+    setLoading(true);
+
+    (async () => {
+      try {
+        const [response] = await Promise.all([
+          request<HomeResponse>(ENDPOINT, QUERY_PAGE_BY_URI, {
+            uri: "quiero-ser-una-fc-socia",
+          }),
+        ]);
+
+        if (!active) return;
+
+        const edges = response?.page?.home?.secciones?.edges ?? [];
+        const ingles = response?.page?.home?.ingles ?? false;
+        setEnglish(ingles);
+        setEdges(edges);
+      } catch (error) {
+        if (active) console.error("Error fetching data:", error);
+      } finally {
+        if (active) setLoading(false);
+      }
+    })();
+
+    return () => {
+      active = false;
+    };
+  }, []);
+
   return (
-    <Layout darkMode>
-      <div className="flex flex-col items-center">
-        <ContentSection
-          containerClassname="lg:pt-40"
-          bgColor={COLORS.primary}
-          title="Impulsamos nuevas Fundaciones Comunitarias en México"
-          titleClassname="text-2xl md:text-3xl text-tertiary"
-          content={`
-        <div class="text-white font-light text-base md:text-lg">
-        <p>Creemos en el poder de las comunidades para transformar su entorno.</p>
-        <p class="mb-4">
-          Por eso, impulsamos un programa dirigido a fortalecer e integrar nuevas fundaciones comunitarias al ecosistema social del país.
-        </p>
-        <p class="mb-4">
-        <span class="font-semibold">Este programa está dirigido a:</span>
-        <br/>
-        • Grupos promotores que deseen apoyar a sus comunidades
-        <br/>
-        • Organizaciones de la sociedad civil ya constituidas
-        </p>
-        <p class="mb-4 text-tertiary">
-        <span class="font-semibold">A través de un proceso integral de acompañamiento, ofrecemos:</span>
-        <br/>
-        • Identificación, consolidación e integración a la alianza Comunalia
-        <br/>
-        • Orientación estratégica y fortalecimiento institucional
-        <br/>
-        • Estímulos económicos para impulsar su crecimiento en las áreas donde más lo necesitan
-        </p>
-        <p>
-        Al unirse a la alianza, las organizaciones acceden a formación, recursos, redes y oportunidades de colaboración que amplifican su impacto y fortalecen su compromiso con el desarrollo comunitario
-        </p>
-        </div>
-        `}
-          button1Text="Quiero más información"
-          button1Href="mailto:direccion@comunalia.org.mx"
-          mediaType="image"
-          mediaSrc="/images/fcsocia.png"
-          mediaClassname="w-[80%] md:w-auto"
-          reverseMobile
-        />
-      </div>
-    </Layout>
+    <>
+      {loading ? (
+        <FullLoader />
+      ) : (
+        <Layout darkMode lang={english} english={false}>
+          {renderSection({ edges })}
+        </Layout>
+      )}
+      <SEO
+        title={"Comunalia"}
+        description={
+          "Somos una alianza de Fundaciones Comunitarias de México..."
+        }
+        image={"/comunalia.jpg"}
+        pathname={"/quiero_ser_una_fc_socia"}
+        locale={"es_MX"}
+        type="website"
+      />
+    </>
   );
 };
 

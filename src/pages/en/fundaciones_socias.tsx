@@ -1,14 +1,13 @@
 import * as React from "react";
 import { type HeadFC, type PageProps } from "gatsby";
-import Layout from "../components/layout/Layout";
-import { ENDPOINT } from "../constants";
+import Layout from "../../components/layout/Layout";
+import { ENDPOINT } from "../../constants";
 import { request } from "graphql-request";
-import FullLoader from "../components/layout/FullLoader";
-import { HomeResponse } from "../types/homeType";
-import { QUERY_PAGE_BY_URI } from "../utils/querys";
-import { renderSection } from "../utils/renderer";
+import FullLoader from "../../components/layout/FullLoader";
+import { HomeResponse } from "../../types/homeType";
+import { QUERY_PAGE_BY_URI } from "../../utils/querys_en";
+import { renderSection } from "../../utils/renderer";
 import { useState } from "react";
-import SEO from "../components/layout/SEO";
 
 const FundacionesSociasPage: React.FC<PageProps> = () => {
   const [loading, setLoading] = useState(true);
@@ -22,14 +21,12 @@ const FundacionesSociasPage: React.FC<PageProps> = () => {
     (async () => {
       try {
         const [response] = await Promise.all([
-          request<HomeResponse>(ENDPOINT, QUERY_PAGE_BY_URI, {
-            uri: "fundaciones-socias",
-          }),
+          request<HomeResponse>(ENDPOINT, QUERY_PAGE_BY_URI, { uri: "fundaciones-socias" }),
         ]);
 
         if (!active) return;
 
-        const edges = response?.page?.home?.secciones?.edges ?? [];
+        const edges = response?.page?.translations[0]?.home?.secciones?.edges ?? [];
         const ingles = response?.page?.home?.ingles ?? false;
 
         setEdges(edges);
@@ -51,20 +48,10 @@ const FundacionesSociasPage: React.FC<PageProps> = () => {
       {loading ? (
         <FullLoader />
       ) : (
-        <Layout darkMode lang={english} english={false}>
+        <Layout darkMode lang english>
           {renderSection({ edges })}
         </Layout>
       )}
-      <SEO
-        title={"Comunalia"}
-        description={
-          "Somos una alianza de Fundaciones Comunitarias de México..."
-        }
-        image={"/comunalia.jpg"}
-        pathname={"/fundaciones_socias"}
-        locale={"es_MX"}
-        type="website"
-      />
     </>
   );
 };
